@@ -1,7 +1,9 @@
-nome="ARTHUR FRANTZ"
-idade=22
-def hello(nome,idade):
-    print(f"Olá {nome}, sua idade é {idade} :P ")
+n=input("digite seu nome")
+i=int(input("digite sua idade "))
+a=float(input("digite sua altura "))
 
+def dados(n,i,a):
+    print("esses são seus dados cadrastrados no sistema !")
+    print("\nseu nome é ",n,"\nsua idade é ",i,"\nsua altura é de ",a)
 
-hello(nome,idade)
+print(dados(n,i,a))
