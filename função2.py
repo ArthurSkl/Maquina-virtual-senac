@@ -17,4 +17,6 @@ elif(expo(x,y) >99 and expo(x,y) <= 999):
 elif(expo(x,y) >999 and expo(x,y) <= 9999):
     print("sua calculo deu um numero de 4 digitos !")
 elif(expo(x,y) >9999 and expo(x,y) <= 99999):
-    print("seu calculo deu um numero de 5 digitos !")         
+    print("seu calculo deu um numero de 5 digitos !")
+elif(expo(x,y) >99999 and expo(x,y) <= 999999):
+    print("seu calculo deu um numero de 6 digitos !")              
