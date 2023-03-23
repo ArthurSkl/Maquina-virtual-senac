@@ -12,4 +12,4 @@ def contaluz(KWh,valor):
 conta=contaluz(KWh,valor)
 
 print("KWh dia ",KWh) 
-print(f"o valor da usa conta  do mês foi de = {conta}")
+print(f"o valor da usa conta  do mês foi de = {conta}") 
