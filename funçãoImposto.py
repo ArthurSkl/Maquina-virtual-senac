@@ -7,4 +7,5 @@ def calI(x,taxa):
     return R
  
 Resultado=calI(x,taxa)
-print(Resultado)
+print(Resultado) 
+
