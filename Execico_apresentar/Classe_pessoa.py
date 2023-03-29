@@ -1,4 +1,19 @@
 import re
+
+import time    
+
+def progress_bar(duration):
+    for i in range(101):
+        progress = '#' * i
+        empty_space = '' * (100 - i)
+        bar = '[' + progress + empty_space + ']'
+        percent = str(i) + '%'
+        print('\r' + bar + percent, end='')
+        time.sleep(duration/100)
+
+    print('\nConcluído!')
+
+
 class Pessoa :
     def __init__(self,nome:str,cpf:str,numero:int,salario:float):  
         
@@ -15,6 +30,8 @@ class Pessoa :
         
 
         if (isinstance(nome,str)): 
+            print("Validando Nome ! ")
+            progress_bar(6)
             return nome 
          
         else : 
@@ -65,7 +82,7 @@ def contem_numeros(string):
     padrao = re.compile(r'\d')
     return bool(padrao.search(string))
 
-x=Pessoa(1,"01234567891",99999999,1996.90)
+x=Pessoa("arthur","01234567891",99999999,1996.90)
  
 print(x.get_dados())  
 
