@@ -1,3 +1,4 @@
+import re
 class Pessoa :
     def __init__(self,nome:str,cpf:str,numero:int,salario:float):  
         
@@ -11,23 +12,29 @@ class Pessoa :
        
 
     def validar_nome(self,nome):
-        print(type(nome))
+        
 
         if (isinstance(nome,str)): 
             return nome 
+         
         else : 
-            while True :
+            nome = (input("DIGITE NOVAMENTE: "))
+
+            while contem_numeros(nome)  : 
                 print("NOME INVALIDO!!")
-                nome = input("DIGITE NOVAMENTE: ")
-                self.validar_nome(nome) 
-                print(type(nome))
-                if type(nome) == str : 
-                    break
-            return nome            
+
+                nome = (input("DIGITE NOVAMENTE: "))
+
+                if (not(contem_numeros(nome))):  
+                    break 
+            return nome
+                    
     def validar_cpf(self,cpf):
 
-        if (isinstance(cpf,str)):  
+        if (isinstance(cpf,str) and (len(cpf)==11)):  
+
             return cpf 
+        
         else : 
             while True :
                 print("NOME INVALIDO!!")
@@ -51,10 +58,14 @@ class Pessoa :
             return "ERROO" 
     def get_dados (self): 
 
-        print (f"{self.nome}")    
+        return self.nome , self.cpf , self.numero , self.salario   
 
+def contem_numeros(string):
+    """Retorna True se a string contém pelo menos um número, caso contrário, retorna False."""
+    padrao = re.compile(r'\d')
+    return bool(padrao.search(string))
 
-x=Pessoa(1,5451851,99999999,1996.90)
+x=Pessoa(1,"01234567891",99999999,1996.90)
  
 print(x.get_dados())  
 
@@ -62,6 +73,11 @@ print(x.get_dados())
 
 
 
+
+
+# Exemplo de uso
+#print(contem_numeros("Olá, mundo!"))  # False
+#print(contem_numeros("A senha é 1234"))  # True
 
 
 
