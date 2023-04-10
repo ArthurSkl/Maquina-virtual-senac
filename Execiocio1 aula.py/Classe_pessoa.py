@@ -1,4 +1,4 @@
-from barra_pregressao import *
+from barra_progressao import *
 
 class Pessoa : 
     def __init__(self,nome,matricula,idade):

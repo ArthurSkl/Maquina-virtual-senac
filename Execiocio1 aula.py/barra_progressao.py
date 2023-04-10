@@ -7,6 +7,7 @@ def progress_bar(duration):
         percent = str(i) + '%'
         print('\r' + bar + percent, end='')
         time.sleep(duration/100)
+        
 
     print('\nConcluído!') 
 

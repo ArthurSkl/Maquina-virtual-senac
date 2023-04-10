@@ -1,5 +1,5 @@
 
-from barra_pregressao import *
+from barra_progressao import *
 class Filme :
     def __init__(self,nome,duration,) :
         self.nome = nome 
