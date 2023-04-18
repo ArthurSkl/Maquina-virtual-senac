@@ -1,0 +1,28 @@
+.computadores #pcfake{
+    justify-content: space-around;
+    background-color: black;
+    color: red;
+    font-size: 10px; 
+    text-align: center; 
+    border-radius: 15px;
+    
+    
+} 
+.computadores{
+    display: flex;
+
+}
+button{
+    margin: 25px;
+    font-size: 16px;
+}
+.imagem{
+    transform: scale(0.5,0.5);
+    
+
+}
+h1{
+    font-size: 25px;
+}
+    
+    
