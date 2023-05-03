@@ -8,16 +8,18 @@
 
 .cadastro{
     gap: 100px;
+    margin-left: 20%;
     flex-wrap: wrap;
     display: flex;
     align-items: center;
-    justify-content: center;
-    height: 40vh;
+    justify-content: space-evenly;
+    height: 100vh;
     grid-template-columns:max-content ;
+    
 
 }
 h1{
-    color: rgb(206, 199, 191);
+    color: rgb(255, 255, 255);
 }
 
 .barra{
@@ -46,7 +48,8 @@ h1{
 
 .conteudo{
     
-    display: grid;
+    display: flex;
+    flex-direction: column;
     text-align: center;
     padding: 10px;
     box-shadow: 20px 20px 30px;
@@ -57,6 +60,7 @@ h1{
       
 } 
 .perfilbotao{ 
+
     border-radius: 500px;
     background-color: aliceblue;
     height: 75px;
@@ -64,18 +68,38 @@ h1{
      
 }
 #imagemperfil{
+
     height: 100%;
     width: 100%; 
     border-radius: 500px;
 
 }
 .filtro{
-    position: absolute;
 
-    top: 78px;
-    width: 15%;
-    height: 50%;
-    border: 3px solid black
+    border-radius: 15px;
+    position: absolute;
+    
+    width: 12%;
+    padding: 5px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+     
+}
+
+.conteudop{
+    justify-content: space-evenly;
+    display: flex;
+    align-items: center;
+    margin-right: 15%;
+    
+}
+    
+#fundo{
+    width: 100% ;
+
+    height: 100%;
+    
     
 }
 button{
@@ -90,4 +114,79 @@ input{
     border-radius: 15px;
     text-align: left ;
     padding: 4px;
+}
+.topo{
+    display: flex;
+    flex-direction: column;
+}
+.opfiltro{  
+    
+    font-size: 20px;
+
+}
+h3{ 
+    margin-top: 30px;
+    font-size: 30px;
+    text-align: center;
+} 
+.filtrotex{
+    border-radius: 12px;
+    text-align: center;
+    margin: 0px;
+    font-size: 30px;
+    padding: 15px;
+    border: solid 2px black;
+    
+
+}
+.botaoc{
+    margin: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+#t1{
+
+    margin-top: 50px;
+
+}
+.produtos{
+
+    display: flex;
+    flex-wrap: wrap;
+    display: flex;
+    gap: 100px;
+    margin-left: 15%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    height: 100vh;
+    grid-template-columns:max-content ;
+
+}
+.conteudop{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+
+}
+h1{
+    font-size: 20px;margin-left: 15%;
+} 
+.confp{
+    border-radius: 10px;
+    border: solid 2px black;
+     
+}
+
+.text{
+    display: flex;
+    align-items: end;
+    text-align: center;
+    justify-content: center;
+} 
+#imagensP{
+    border: solid black 2px ;
+    border-radius: 10px;
 }
