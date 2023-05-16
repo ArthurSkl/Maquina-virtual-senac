@@ -1,0 +1,225 @@
+.tela-cadastro-salas .container-cadastro-salas{
+  
+    display: flex;
+    
+    flex-wrap: wrap;
+    width: 100%;
+    margin: auto;
+    align-items: center;
+    padding: 5px;
+    
+    
+  
+  }
+
+  .tela-cadastro-salas .wrap-cadastro-salas{
+    width: 650px;
+    display: flex;
+   
+    align-items: center;
+    justify-content: center;
+    
+    padding: 15px;
+    border-radius: 15px;
+   
+    margin: 200px auto;
+    background-color: rgb(255, 255, 255);
+    
+    
+    
+  }
+  .tela-cadastro-salas .cadastro-sala-form{
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .tela-cadastro-salas .wrap-input{
+    width: 100%;
+    position: relative;
+    border-bottom: 2px solid rgb(76,76,76);
+    display: block;
+    font-size: 18px;
+    height: 46px;
+    background: transparent;
+    padding-bottom: 0px;
+    
+    
+  }
+  .tela-cadastro-salas .input-form{
+    font-size: 18px;
+    color: rgb(76,76,76);
+    display: block;
+    width: 100%;
+    height: 46px;
+    background: transparent;
+    padding-bottom: 0;
+    border: none;
+    outline: none !important;
+    
+    
+    
+  }
+  .tela-cadastro-salas .margin-bottom-35{
+    margin-bottom: 35px;
+  }
+ 
+  
+  
+  .tela-cadastro-salas .focus-input-form{
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    
+    
+  }
+  .tela-cadastro-salas .focus-input-form::before{
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    transition: all 0.4s;
+    background-color: #212121;
+    
+    
+
+  }
+  
+  .tela-cadastro-salas .focus-input-form::after{
+    font-size: 18px;
+    margin-top: 15px;
+    color: burlywood;
+    content: attr(data-placeholder);
+    display: block;
+    width: 100%;
+    position: relative;
+    padding-left: 0px;
+    transition: all 0.4s;
+    color: rgb(55, 64, 71);
+    
+    
+  }
+  
+  .input-form:focus  ~ .focus-input-form::after, .input-form:valid ~ .focus-input-form::after{
+    top: -20px;
+    font-size: 15px;
+    border: none;
+    
+  }
+  
+  .input-form:valid  ~ .focus-input-form::after{
+    top: -20px;
+    font-size: 15px;
+   
+    
+  }
+  .container-cadastro-sala-form-btn{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+  }
+  .cadastro-sala-form-btn{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+
+.text-area{
+    display: flex;
+    justify-self: center;
+
+}
+#descrição{
+    display: flex;
+    align-items: center;
+}
+
+.area-anexo{
+  width: 150px;
+  height: 150px;
+}
+
+#selecao-cor-text{
+  display: flex;
+  justify-self: center;
+
+}
+.img-area{
+  width: 100%;
+  height: 15%;
+}
+#img-text{
+  display: flex;
+  left: 0;
+  padding-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+.text-descricao{
+  resize: none;
+}
+.area-anexo{
+  background-color: aliceblue;
+  height: 150px;
+  width: 55%;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  border: dashed  black 2px;
+}
+#icon-fotos{
+  display: flex;
+  height: 100%;
+  width: 60%;
+  opacity: 0.5;
+}
+
+.container-cadastro-sala-form-btn  {
+  height: 200px;
+  width: 100%;
+}
+.botao-cor{
+  display: flex;
+  position: relative;
+  right: -505px; 
+
+  width: 45px;
+  height: 45px;
+  box-shadow: #F7941D 0px 5px 10px 0px;
+  border-radius: 9px;
+  border: solid beige 3px;
+}
+
+input[type="file"] {
+  display: none;
+  
+}
+#botão-img{
+  margin-top: 15px;
+  display: flex;
+  width: 150px;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 10px;
+  border: solid black 2px;
+  cursor: pointer;
+}

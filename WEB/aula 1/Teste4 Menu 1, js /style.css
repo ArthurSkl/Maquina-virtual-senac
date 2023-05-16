@@ -119,3 +119,25 @@ h1{
     width: 100px;
     height: 190px;
 }
+
+.navbar .nav-menu .nav-menu{
+    display: none;
+    position: absolute;
+    width: 200px;
+    
+
+}
+
+.navbar .nav-menu .nav-item:hover .nav-menu{
+    display: block; 
+    background-color: blueviolet;
+
+
+}
+
+.navbar .nave-menu .nav-menu .nav-item{
+    padding: 10px;
+}
+.navbar .nav-menu .nav-menu .nav-item .nav-link{
+    text-align: center;
+}
