@@ -1,3 +1,14 @@
+:root{
+  --cor-primaria-botao-white: white; 
+  --cor-primaria-botao-green: green;
+  --cor-primaria-botao-red:   red;
+  --cor-primaria-botao-yellow:rgba(255, 199, 0, 1);
+  --cor-primaria-botao-blue:  rgba(6, 74, 140, 1);
+  ;
+}
+
+
+
 .tela-cadastro-salas .container-cadastro-salas{
   
     display: flex;
@@ -11,9 +22,17 @@
     
   
   }
+  .container{
+    display: flex;
+    flex-wrap: wrap;
+    
+
+  }
+
+  
 
   .tela-cadastro-salas .wrap-cadastro-salas{
-    width: 650px;
+    width: 40vw;
     display: flex;
    
     align-items: center;
@@ -22,7 +41,7 @@
     padding: 15px;
     border-radius: 15px;
    
-    margin: 200px auto;
+    margin: 10% auto;
     background-color: rgb(255, 255, 255);
     
     
@@ -35,6 +54,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border: solid black 3px;
+
   }
   
   .tela-cadastro-salas .wrap-input{
@@ -42,19 +63,20 @@
     position: relative;
     border-bottom: 2px solid rgb(76,76,76);
     display: block;
-    font-size: 18px;
+    font-size: 15px;
     height: 46px;
     background: transparent;
-    padding-bottom: 0px;
+    padding-bottom: 0px; 
+    
     
     
   }
   .tela-cadastro-salas .input-form{
-    font-size: 18px;
+    font-size: 15px;
     color: rgb(76,76,76);
     display: block;
     width: 100%;
-    height: 46px;
+    height: 65px;
     background: transparent;
     padding-bottom: 0;
     border: none;
@@ -74,7 +96,7 @@
     display: block;
     width: 100%;
     height: 100%;
-    top: 0;
+    top: 5px;
     left: 0;
     pointer-events: none;
     
@@ -96,7 +118,7 @@
   }
   
   .tela-cadastro-salas .focus-input-form::after{
-    font-size: 18px;
+    font-size: 15px;
     margin-top: 15px;
     color: burlywood;
     content: attr(data-placeholder);
@@ -123,6 +145,7 @@
    
     
   }
+
   .container-cadastro-sala-form-btn{
     width: 100%;
     height: 100%;
@@ -136,19 +159,25 @@
     margin: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
+    
     
   }
 
 
 .text-area{
     display: flex;
+    flex-direction: row;
     justify-self: center;
 
+    
 }
 #descrição{
     display: flex;
     align-items: center;
+    font-size: 15px; 
+    opacity: 0.7;
+    padding-right: 30px;
 }
 
 .area-anexo{
@@ -158,32 +187,71 @@
 
 #selecao-cor-text{
   display: flex;
-  justify-self: center;
+  justify-self: center; 
+  opacity: 0.7;
 
 }
 .img-area{
   width: 100%;
   height: 15%;
+  display: flex;
+  flex-direction: column;
+  
 }
 #img-text{
   display: flex;
-  left: 0;
-  padding-top: 30px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  padding-bottom: 20px; 
+  opacity: 0.7;
+  
 
 }
 .text-descricao{
   resize: none;
+  width: 85%;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  
+  text-align: center; 
+  border: solid black 1px;
+  opacity: 0.7;
+  outline: none
+  
+}
+
+.cor-sala{
+  width: 100%;
+  display: flex;
+ flex-direction: row;
+ 
+ justify-content: space-evenly;
+ padding-top: 20px
+
+}
+.alinar-img{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  
+}
+.alinar-botao-cor{
+  display: flex;
+  flex-direction: column;
+  width: 8vw;
+  align-items: center;
+ 
+
 }
 .area-anexo{
   background-color: aliceblue;
   height: 150px;
-  width: 55%;
+  width: 70%;
   border-radius: 12px;
   display: flex;
   justify-content: center;
+  
   border: dashed  black 2px;
 }
 #icon-fotos{
@@ -199,8 +267,8 @@
 }
 .botao-cor{
   display: flex;
-  position: relative;
-  right: -505px; 
+
+  margin: 30px auto;
 
   width: 45px;
   height: 45px;
@@ -214,12 +282,94 @@ input[type="file"] {
   
 }
 #botão-img{
-  margin-top: 15px;
+  margin-top: 25px;
+  margin-bottom: 25px;
   display: flex;
-  width: 150px;
+  width: 120px;
   justify-content: center;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 7px;
+  border-radius: 7px;
   border: solid black 2px;
   cursor: pointer;
+  font-family: 'Montserrat';
+  
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 50px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px; 
+
+  opacity: 0.7;
+  
+}
+.botao-padrao-cadastrar{
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 30%;
+  
+}
+
+.botao-cadastrar-submit{
+  background-color: var(--cor-primaria-botao-white);
+  border: 3px solid var(--cor-primaria-botao-green);
+  color: var(--cor-primaria-botao-green);
+  font-family: 'Montserrat';
+  width: 167px;
+  height: 52px;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 50px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.botao-cadastrar-submit:hover{
+  transition: all 0.4s;
+  background-color: var(--cor-primaria-botao-green);
+  color: var(--cor-primaria-botao-white);
+}
+
+
+
+
+.botao-padrao-voltar{
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 30%;
+ 
+}
+
+.botao-voltar-submit{
+  width: 167px;
+  height: 52px;
+  font-size: 24px;
+  background-color: var(--cor-primaria-botao-white);
+  border: 3px solid var(--cor-primaria-botao-yellow);
+  border-radius: 50px;
+  cursor: pointer;
+  color: var(--cor-primaria-botao-yellow);
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.botao-voltar-submit:hover{
+  transition: all 0.4s;
+  background-color: var(--cor-primaria-botao-yellow);
+  color: var(--cor-primaria-botao-white);
+}
+
+
+.alinar-botoes{
+  display: flex;
+  justify-content: space-evenly;
 }

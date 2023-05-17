@@ -60,28 +60,35 @@
 
                     </div>
 
-                    <div class="text-area">
-
-                        <span id=descrição>DESCRIÇÃO</span>
-
-                        <textarea name="" id="" cols="70" rows="10" class="text-descricao"></textarea>
-
-
-
-                    </div>
-
+                    
+                    
                     <div class="img-area">
                         
-                        
-                        
-                        <span id="img-text"> Insira a imagem : <span id="selecao-cor-text">Escolha a cor da sala : </span> </span>
-                        
-                            <input class="botao-cor" type="color">
 
-                            <div class="area-anexo"> <img src="imagens/camera.png" alt="" id="icon-fotos">  </div>
 
-                            <label id="botão-img"for="arquivo">Enviar arquivo</label>
-                            <input type="file" name="arquivo" id="arquivo">
+
+                        <div class="text-area">
+                            <span id=descrição>Descrição</span>
+    
+                            <textarea  placeholder="AREA DE TEXTO" name="" id="" cols="70" rows="10" class="text-descricao"></textarea>
+                        </div>
+                        <div class="cor-sala">
+                            <div class="alinar-img">
+                                <span id="img-text"> Insira a imagem : </span>
+                                <div class="area-anexo"> <img src="imagens/camera.png" alt="" id="icon-fotos">  </div>
+                            </div>    
+                            <div class="alinar-botao-cor">
+                                <span id="selecao-cor-text">cor da sala : </span> 
+                                <input class="botao-cor" type="color">
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+                        <label id="botão-img"for="arquivo">Enviar arquivo</label>
+
+                        <input type="file" name="arquivo" id="arquivo">
                             
 
                             
@@ -92,15 +99,15 @@
 
                     </div>
                     
-
-                   
-                    
-                    <button class="cadastro-sala-form-btn">
-
-                        Cadastrar
-
-                    </button>
-
+                    <div class="alinar-botoes">
+                        <div class="botao-padrao-voltar">
+                            <a href="#"><input type="submit" class="botao-voltar-submit"  value="VOLTAR"></a>
+                        </div>
+                        <div class="botao-padrao-cadastrar">
+                            <a href="#"><input type="submit" class="botao-cadastrar-submit"  value="CADASTRAR"></a>
+                        </div>
+                        
+                    </div>
                 </form>  
             </div>
         </div>
