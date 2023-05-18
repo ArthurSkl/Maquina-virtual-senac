@@ -1,0 +1,29 @@
+git status 
+
+git add . 
+git commit -a -m "texto"
+gis push origin master (ou nome da branch) 
+
+
+git merge (nome da branch) (nome da outra branch) 
+git checkout (nome da branch que vc quer ir)
+git branch (nome de todas branch)  
+
+
+
+
+
+COMANDOS====LINUX====
+
+DIR (SABER ONDE ESTA)
+CD (SE MOVER PARA NOME DA PASTA) 
+pwd (caminho de onde estou) 
+ls (listar pastas) 
+sudo (super usuario)
+nano (para digitar codigos) 
+code .. (abre visual code) 
+sudo nano (nome do arquivo para editar e salvar ) 
+sudo mkdir(cria pasta) 
+mv(move o arquivo) 
+sudo apt update(atualiza) 
+sudo instal (nome do aplicativo) 
