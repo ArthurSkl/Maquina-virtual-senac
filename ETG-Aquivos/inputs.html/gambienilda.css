@@ -1,0 +1,14 @@
+.input-linha{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    
+} 
+
+.cards{
+    width: 11%;
+    border: none;
+    position: absolute;
+    background: transparent;
+    outline: none;
+}
