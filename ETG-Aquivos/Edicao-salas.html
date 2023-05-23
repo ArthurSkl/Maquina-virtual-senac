@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edição de salas</title>
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
@@ -49,20 +49,34 @@
 
                     </div>
 
-                    <div class="input-linha">
+                    <div class="dropdown-ck">
 
-                        <input type="text"  name="" id="checklist-s" placeholder="Selecione o Checklist">
-            
-                        <select  name="cards" class="cards">
-            
-                            <option value=""></option>
-                            <option value="">CHECKLIST 1</option>
-                            <option value="">CHECKLIST 2</option>
-                            <option value="">CHECKLIST 3</option>
-            
-                        </select>
-            
-                    </div>   
+                        <input type="text" class="textbox-ck"
+                        placeholder="Dropdown Menu" readonly>
+                        
+                        <div class="option">
+                            <div onmouseover="show('checklist1')" class="ops" > checklist1</div>
+                            <div onmouseover="show('checklist2')" class="ops" > checklist2</div>
+                            <div onmouseover="show('checklist3')" class="ops" > checklist3</div>
+                            <div onmouseover="show('checklist4')" class="ops" > checklist4</div>
+                            <div onmouseover="show('checklist5')" class="ops" > checklist5</div>
+                        </div>
+                    
+                    </div>
+                       
+                    <script>
+                        function show(anything){
+                            document.querySelector('.textbox-ck').value = anything
+                        }
+                        let dropdown = document.querySelector('.dropdown-ck');
+                        dropdown.onclick = function(){
+                            dropdown.classList.toggle('active');
+                            
+                        }
+                
+                        
+                    </script>   
+ 
 
                     
                     
