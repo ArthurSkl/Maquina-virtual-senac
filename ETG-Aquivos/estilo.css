@@ -7,7 +7,21 @@
   ;
 }
 
+.titulo_de_cadastro{
+  font-size: 45px;
 
+}
+
+.titulo_edicao_de_sala{
+  font-size: 45px;
+}
+
+
+*{
+
+  font-family:'Montserrat', sans-serif;
+
+}
 
 .tela-cadastro-salas .container-cadastro-salas{
   
@@ -32,8 +46,9 @@
   
 
   .tela-cadastro-salas .wrap-cadastro-salas{
-    width: 40vw;
-    max-width: 600px;
+    width: 100vw;
+    max-width: 900px;
+    
     display: flex;
     
     align-items: center;
@@ -42,7 +57,7 @@
     padding: 15px;
     border-radius: 15px;
    
-    margin: 10% auto;
+    /* margin: 10% auto auto 5% ; */
     background-color: rgb(255, 255, 255);
     
     
@@ -50,12 +65,12 @@
   }
   .tela-cadastro-salas .cadastro-sala-form{
     width: 100%;
-    padding: 30px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: solid black 3px;
+    
 
   }
   
@@ -64,7 +79,7 @@
     position: relative;
     border-bottom: 2px solid rgb(76,76,76);
     display: block;
-    font-size: 15px;
+   
     height: 46px;
     background: transparent;
     padding-bottom: 0px; 
@@ -73,7 +88,7 @@
     
   }
   .tela-cadastro-salas .input-form{
-    font-size: 15px;
+    font-size: 17px;
     color: rgb(76,76,76);
     display: block;
     width: 100%;
@@ -119,15 +134,15 @@
   }
   
   .tela-cadastro-salas .focus-input-form::after{
-    font-size: 15px;
-    margin-top: 20px;
+    font-size: 20px; 
+    margin-top: 15px;
     color: burlywood;
     content: attr(data-placeholder);
     display: block;
     width: 100%;
     position: relative;
     padding-left: 0px;
-    transition: all 0.4s;
+    
     color: rgb(55, 64, 71);
     
     
@@ -135,14 +150,14 @@
   
   .input-form:focus  ~ .focus-input-form::after, .input-form:valid ~ .focus-input-form::after{
     top: -20px;
-    font-size: 15px;
+    font-size: 20px;
     border: none;
     
   }
   
   .input-form:valid  ~ .focus-input-form::after{
     top: -20px;
-    font-size: 15px;
+    font-size: 20px;
    
     
   }
@@ -242,7 +257,7 @@
 #descrição{
     display: flex;
     align-items: center;
-    font-size: 15px; 
+    font-size: 20px; 
     opacity: 0.7;
     padding-right: 30px;
 }
@@ -254,6 +269,8 @@
 
 #selecao-cor-text{
   display: flex;
+  width: 100%;
+  font-size: 20px;
   justify-self: center; 
   opacity: 0.7;
 
@@ -266,8 +283,9 @@
   
 }
 #img-text{
+  
   display: flex;
-  display: flex;
+  font-size: 20px;
   align-items: center;
   padding-bottom: 20px; 
   opacity: 0.7;
@@ -280,8 +298,9 @@
   border-radius: 12px;
   display: flex;
   flex-direction: column;
-  
-  text-align: center; 
+  font-size: 17px;
+  text-align: justify;
+  padding: 5px; 
   border: solid black 1px;
   opacity: 0.7;
   outline: none
@@ -306,14 +325,15 @@
 .alinar-botao-cor{
   display: flex;
   flex-direction: column;
-  width: 8vw;
+  width: 16vw;
   align-items: center;
+  margin-right: 5%;
  
 
 }
 .area-anexo{
   background-color: aliceblue;
-  height: 150px;
+  height: 200px;
   width: 70%;
   border-radius: 12px;
   display: flex;
@@ -370,7 +390,7 @@ input[type="file"] {
   opacity: 0.7;
   
 }
-.botao-padrao-cadastrar{
+.botao-padrao-cadastrar {
   width: 100%;
   
   display: flex;
@@ -378,7 +398,7 @@ input[type="file"] {
   justify-content: center;
 }
 
-.botao-cadastrar-submit{
+.botao-cadastrar-submit {
   width: 180px;
   height: 45px;
   background-color: var(--cor-primaria-botao-white);
@@ -387,10 +407,10 @@ input[type="file"] {
   cursor: pointer;
   color: var(--cor-primaria-botao-green);
   font-style: normal;
-  font-size: 'Montserrat';
-  font-weight: 500;
   font-size: 15px;
+  font-weight: 500;
 }
+
 
 .botao-cadastrar-submit:hover{
   transition: all 0.4s;
@@ -435,6 +455,7 @@ input[type="file"] {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
+  margin: 50px;
 }
 
 .input-linha{
@@ -478,6 +499,7 @@ input[type="file"] {
   margin-left: 5%;
   width: 100%;
   height: 30px;
+  font-size: 'Montserrat';
   
 }
 
@@ -492,9 +514,10 @@ input[type="file"] {
   border: none;
   outline: none;
   border-bottom: solid 2px black;
+  padding-top: 15px;
   
   
-  font-size: 15px;
+  font-size: 20px;
   
 } 
 
@@ -503,22 +526,26 @@ input[type="file"] {
   position: absolute;
   top: 55%;
   width: 100%;
-  background-color: aliceblue;
+  background-color: rgb(255, 255, 255);
   
   overflow: hidden; 
   display: none;
+  font-size: 'Montserrat';
   
   
 }
 
 .dropdown-ck .option .ops{
-  padding: 5px;
+  padding-top: 12px;
+  padding-bottom: 8px;
+  padding-left: 3px;
   cursor: pointer;
   opacity: 0.7;
+  font-size: 17px;
 }
 
 .dropdown-ck .option .ops:hover{
-  background-color: aquamarine;
+  background-color: rgb(228, 171, 15);
   color: aliceblue;
 } 
 
@@ -532,7 +559,7 @@ input[type="file"] {
   width: 8px;
   height: 8px;
   right: 15px;
-  top: 10px;
+  top: 25px;
   border: solid black 2px;
   border-top: 2px solid aliceblue;
   border-right: 2px solid aliceblue;
@@ -542,12 +569,32 @@ input[type="file"] {
 } 
 
 .dropdown-ck.active::before{
-  top: 22px;
+  top: 25px;
   transform: rotate(-225deg);
 }
 
 .dropdown-ck.active .option{
+  
   display: block;
 }
 
 
+
+
+@media (min-width: 832px){
+
+  .tela-cadastro-salas .container-cadastro-salas{
+  
+    display: flex;
+    
+    flex-wrap: wrap;
+    width: 100%;
+    margin: auto;
+    align-items: center;
+    
+    
+    
+  
+  }
+  
+}
