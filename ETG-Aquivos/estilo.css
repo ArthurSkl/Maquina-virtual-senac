@@ -8,12 +8,12 @@
 }
 
 .titulo_de_cadastro{
-  font-size: 45px;
+  font-size: 30px;
 
 }
 
 .titulo_edicao_de_sala{
-  font-size: 45px;
+  font-size: 30px;
 }
 
 
@@ -31,7 +31,9 @@
     width: 100%;
     margin: auto;
     align-items: center;
-    padding: 5px;
+    justify-content: center;
+    padding: 5px; 
+    
     
     
   
@@ -39,7 +41,7 @@
   .container{
     display: flex;
     flex-wrap: wrap;
-    
+    padding-left: 5%;
 
   }
 
@@ -47,7 +49,7 @@
 
   .tela-cadastro-salas .wrap-cadastro-salas{
     width: 100vw;
-    max-width: 900px;
+    max-width: 700px;
     
     display: flex;
     
@@ -79,12 +81,9 @@
     position: relative;
     border-bottom: 2px solid rgb(76,76,76);
     display: block;
-   
     height: 46px;
     background: transparent;
     padding-bottom: 0px; 
-    
-    
     
   }
   .tela-cadastro-salas .input-form{
@@ -126,7 +125,7 @@
     left: 0;
     width: 0;
     height: 2px;
-    transition: all 0.4s;
+    
     background-color: #212121;
     
     
@@ -390,7 +389,7 @@ input[type="file"] {
   opacity: 0.7;
   
 }
-.botao-padrao-cadastrar {
+.botao-padrao-cadastrar{
   width: 100%;
   
   display: flex;
@@ -398,7 +397,7 @@ input[type="file"] {
   justify-content: center;
 }
 
-.botao-cadastrar-submit {
+.botao-cadastrar-submit{
   width: 180px;
   height: 45px;
   background-color: var(--cor-primaria-botao-white);
@@ -407,17 +406,16 @@ input[type="file"] {
   cursor: pointer;
   color: var(--cor-primaria-botao-green);
   font-style: normal;
+  font-size: 'Montserrat';
+  font-weight: 580;
   font-size: 15px;
-  font-weight: 500;
 }
-
 
 .botao-cadastrar-submit:hover{
   transition: all 0.4s;
   background-color: var(--cor-primaria-botao-green);
   color: var(--cor-primaria-botao-white);
 }
-
 
 
 
@@ -439,7 +437,7 @@ input[type="file"] {
   color: var(--cor-primaria-botao-yellow);
   font-style: normal;
   font-size: 'Montserrat';
-  font-weight: 500;
+  font-weight: 580;
   font-size: 15px;
 
 }
@@ -449,7 +447,6 @@ input[type="file"] {
   background-color: var(--cor-primaria-botao-yellow);
   color: var(--cor-primaria-botao-white);
 }
-
 
 .alinar-botoes{
   width: 100%;
@@ -545,7 +542,7 @@ input[type="file"] {
 }
 
 .dropdown-ck .option .ops:hover{
-  background-color: rgb(228, 171, 15);
+  background-color:#F28920;
   color: aliceblue;
 } 
 
