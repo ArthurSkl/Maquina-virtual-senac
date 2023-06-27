@@ -1327,8 +1327,19 @@ select * from series;
 select * from play;
 
 
+Importando arquivos CSV para banco de dados ====================
 
 
+LOAD DATA INFILE '/var/lib/mysql-files/csv_teste.csv'
+INTO TABLE carro
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+===============================
+
+sudo chmod 777 /var/lib/mysql-files
 
 
 
