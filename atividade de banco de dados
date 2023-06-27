@@ -1,3 +1,9 @@
+Senha do banco $uP0rT3@22 
+
+
+
+
+
 create database garagem; 
 use garagem;
 
@@ -1339,7 +1345,21 @@ IGNORE 1 ROWS;
 
 ===============================
 
-sudo chmod 777 /var/lib/mysql-files
+sudo chmod 777 /var/lib/mysql-files  
+
+
+
+
+
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/titanic.csv'
+INTO TABLE passengers
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
 
 
 
