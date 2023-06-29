@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} 
+body{
+    display: flex;
+} 
+
+.carrossel{
+    position: relative;
+    height: 450px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    background-color: blueviolet;
+} 
+
+.swiper{
+    width: 250px;
+    
+    
+}
+
+
+.card{
+    position: relative;
+    background-color: rgb(69, 121, 217);
+    border-radius: 10px;
+    margin: 20px 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.666);
+    padding: 15px;
+    width: 250px;
+    height: 320px;
+
+}
+
+.card .card-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+
+.card .imagem{
+    height: 140px;
+    width: 140px;
+    border-radius: 50%;
+    border: 3px solid black;
+    
+}
+
+.card .imagem #foto-dev{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+
+} 
+
+.card .media-icons{
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card .media-icons i{
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: black;
+}
+
+.card .media-icons i:hover{
+    opacity: 0.4;
+} 
+
+.card .name-profession{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.name-profession .name{
+    font-size: 20px;
+    font-weight: 600;
+    color: aliceblue;
+} 
+
+.name-profession .profession{
+    font-size: 16px;
+    font-weight: 600;
+    color: aliceblue;
+    padding: 5px;
+}
+
+.card .rating{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.card .rating i{
+    font-size: 16px;
+    margin: 0 2px;
+    color: goldenrod;
+} 
+
+.card .button{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+} 
+
+.card .button button{
+    background-color: rgba(127, 74, 177, 0.825);
+    outline: none;
+    border: none;
+    color: aliceblue;
+    padding: 5px 5px ;
+    border-radius: 20px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+} 
+
+.button button:hover{
+    opacity: 0.6;
+}
+

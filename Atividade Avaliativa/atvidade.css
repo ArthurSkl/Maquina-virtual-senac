@@ -5,7 +5,7 @@
 }
 
 body{
-    background-image: linear-gradient(45deg, rgba(32, 50, 89, 0.791), rgba(164, 56, 27, 0.808), rgba(22, 123, 22, 0.762));
+    background-image: linear-gradient(45deg, rgb(32, 152, 189), rgb(35, 61, 179),rgb(37, 153, 166));
     
 }
 
@@ -21,7 +21,8 @@ header{
     height: 80px;
     margin-bottom: 35px;
     z-index: 99999;
-    background-color: rgba(31, 31, 31, 0.775);
+    background-color: rgba(31, 31, 31, 0.871); 
+
     
 }
 
@@ -64,45 +65,46 @@ li a {
 }
 
 
-#historia{
-    display: flex;
+#tituloH{
+    font-size: 36px;
+    color: black;
+    margin-bottom: 3%;
     
-    justify-content: space-between;
+
+    
+}
+
+h1{
+    font-size: 36px;
+    color: black;
+    margin-bottom: 3%;
+
+}
+
+#historia{
+    color: antiquewhite;
+    display: flex;
+    flex-direction: column;
     text-align: justify;
-    overflow: hidden;
-    word-wrap: break-word;
-    transition-delay: 3s;
-    white-space: nowrap;
-    animation: type 3.0s steps(60),blink 200ms steps(60) infinite normal;
     font-size: 18px;
     margin-left: 10%;
     margin-bottom: 2%;
-    margin-top: 2%;
+    margin-top: 3%;
     width: 80% 
     
 }
 
 #historia1{
 
-     
-
     display: flex;
-    
     justify-content: space-between;
     text-align: justify;
-    overflow: hidden;
-    word-wrap: break-word;
-    transition-delay: 3s;
-    white-space: nowrap;
-    animation: type 3.0s steps(60) 3s,blink 200ms steps(60)  infinite normal;
     font-size: 18px; 
     margin-left: 10%;
     margin-bottom: 2%;
     margin-top: 2%;
     width: 100%; 
     
-    
-
 }
 @keyframes type { 
     0%{
@@ -153,7 +155,7 @@ h1{
     margin-left: 3%;
     margin-right: 3%;
     margin-bottom: 5%;
-    background-color: rgba(0, 0, 0, 0.58);
+    background-color: rgba(0, 0, 0, 0.8);
     border-radius: 20px;
     width: 260px;
     height: 350px; 
@@ -189,6 +191,7 @@ h1{
     position: sticky;
     top: 0;
     border-radius: 20px;
+    object-fit: cover;
 
 }
 
@@ -235,13 +238,15 @@ h3{
 footer{
     width: 80%;
     height: 10vh;
-    margin-left: 10%;
-    
+    padding-left: 10%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    text-align: justify;
     justify-content: space-evenly;
 
 }
+
 
 
 
@@ -298,7 +303,7 @@ footer{
 }
 
 .frente{
-    background-color: #adadad;
+    background-color: #e6e6e6;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -307,7 +312,7 @@ footer{
 }
 
 .tras{
-    background-color: rgb(39, 31, 31);
+    background-color: rgb(39, 35, 35);
     height: 100%;
     width: 100%;
     transform: rotateY(180deg) translateZ(1px);
