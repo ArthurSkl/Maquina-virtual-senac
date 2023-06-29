@@ -5,34 +5,37 @@
 } 
 body{
     display: flex;
+    justify-content: center;
+    
 } 
 
 .carrossel{
     position: relative;
     height: 450px;
-    width: 100%;
+    width: 1075px;
     display: flex;
     justify-content: center;
-    margin-top: 100px;
-    background-color: blueviolet;
+    margin-top: 10%;
+    
 } 
 
 .swiper{
-    width: 250px;
+    width: 950px;
     
     
 }
 
 
 .card{
+    
     position: relative;
     background-color: rgb(69, 121, 217);
     border-radius: 10px;
     margin: 20px 0;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.666);
+    
     padding: 15px;
-    width: 250px;
-    height: 320px;
+    
 
 }
 
@@ -41,7 +44,11 @@ body{
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    height: 100%;
     position: relative;
+    border: solid black 5px;
+    border-radius: 10px;
+    
 }
 
 .card .imagem{
@@ -134,5 +141,9 @@ body{
 
 .button button:hover{
     opacity: 0.6;
+} 
+
+.swiper-slide.card{
+    height: 400px;
 }
 
