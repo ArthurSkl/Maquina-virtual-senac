@@ -1839,6 +1839,1017 @@ select * from cliente;
 select preco from pedido_item 
 inner join produto
 on pedido_item.id_produto = produto.id_produto; 
+ 
+ 
+ 
+ 
+create database garagem; 
+use garagem;
 
+create table pessoa (
+	id_pessoa int not null auto_increment,
+    nome varchar(100) not null,
+    cpf char(11) unique not null,
+    rg char(11) not null,
+    email varchar(150),
+    constraint primary key (id_pessoa)
+    
+    );
+    
+create table conta_extra(
+	id_conta int not null auto_increment,
+    nome varchar(100) not null,
+    email varchar(100) not null,
+    id_usuario int not null ,
+    constraint primary key (id_conta),
+    constraint foreign key (id_usuario) references usuarios (id_usuario)
+);    
+
+insert into conta_extra (nome,email,id_usuario) values("zés","emailzés@hotmail.com",99);
+selecT * from usuarios;
+
+show tables ;    
+insert into pessoa (nome,cpf,rg,email) values ("wanderley","457812","123","wanderley-terra@gmail.com");    
+insert into pessoa (nome,cpf,rg,email) values ("Arthur Simões","4485128","456","jorgefugitora@hotmail.com");
+insert into pessoa (nome,cpf,rg) values ("jão","875496","87956");
+insert into pessoa (nome,cpf,rg,email) values ("vinicios","22123","2223365","main-irelia@hotmail.com");
+insert into pessoa values (default, "igor silva","3232","542432","igor@hotmail.com");
+insert into pessoa (nome,cpf,rg,email) values ("Arthur Augusto Coelho Frantz","0215148","21568","coelhojogos@hotmail.com");
+insert into pessoa (nome,cpf,rg,email) values ("thiago","3949282","97681495","tiago@hotmail.com");
+insert into pessoa (nome,cpf,rg,email) values ("zé","5683246","78464512","zé@hotmail.com");
+insert into pessoa (nome,cpf,rg,email) values ("nome aleatorio","47269d433","4827863228","nomealeatorio@hotmail.com");
+
+select * from pessoa;  
+select * from carro;
+
+create table carro(
+	id_carro int not null auto_increment,
+    marca varchar(50) not null,
+    modelo varchar(50) not null,
+	portas char(4) not null,
+    placa char(8) not null,
+    id_pessoa int not null,
+    constraint primary key (id_carro), 
+    constraint foreign key (id_pessoa) references pessoa (id_pessoa)
+    
+); 
+    
+alter table carro add column id_pessoa int not null;    
+insert into carro (marca,modelo,portas,placa,id_pessoa) values ("volks","Gol","3","hhh-0000",3); 
+insert into carro (marca,modelo,portas,placa,id_pessoa) values("Chevrolet","Celta","4","hhh-1000","1");   
+select * from carro;
+
+alter table carro add constraint id_fk_pessoa
+foreign key(id_pessoa) references pessoa (id_pessoa);
+
+drop table carro ;
+    
+show tables ;	
+
+
+select current_date();
+select current_timestamp();
+select current_time();
+select now();
+
+
+create table login(
+
+	id_login int not null auto_increment, 
+    email varchar(100) not null,
+    senha varchar(100) not null,
+    logado timestamp default current_timestamp(),
+    
+    constraint primary key (id_login)
+    
+);
+
+
+insert into login (email,senha) values ("art55hur@solomons.com","4455654566"); 
+
+select * from login;
+
+select email, date_format(logado,'%d%m/%Y') as ultimo_login from login; 
+
+select email, date_format(logado,'%D') as ultimo_login from login; 
+
+
+insert into login (email,senha,logado) values("dasdsa","dsadsa",current_date()) ;
+
+
+create table funcionario(
+id int not null auto_increment,
+nome varchar(100) not null,
+data_nasc date not null,
+constraint primary key (id)
+);
+
+
+insert into funcionario (nome,data_nasc) values ("dsadsadsadsa","1985-05-12");
+
+show databases;
+
+select * from funcionario;
+
+select id,nome,
+timestampdiff(YEAR,data_nasc,now()) as idade 
+from funcionario; 
+
+
+show databases; 
+
+use garagem; 
+
+show tables;
+
+create table produtosBK(
+	id int not null auto_increment,
+    nome varchar(100) not null,
+    preco decimal(10,2) not null,
+    constraint primary key (id)
+    
+); 
+
+select * from produtosBK; 
+
+insert into produtosBK
+select null,nome,preco from produtos;
+
+
+insert into produtos values (default,"morango",7);
+insert into produtos values (default, "laranja",10);
+insert into produtos values (default, "melancia",12); 
+insert into produtos (nome,preco) values ("abacaxi",5); 
+
+
+select * from produtos where preco > 3 ; 
+
+
+select id,nome from produtos
+where preco in 
+(select max(preco) from produtos);    
+
+
+
+
+create database biblioteca; 
+use biblioteca;
+
+create table livro(
+	id_livro int not null auto_increment,
+    titulo varchar(100) not null, 
+    descricao text not null,
+    idioma varchar(50),
+    paginas int ,
+	constraint primary key (id_livro)
+);  
+
+select * from livro; 
+select * from autor;
+
+insert into livro (titulo,descricao,idioma,paginas,id_autor,id_editora) values ("livro 1","o primeiro livro a ser cadastrado","portugues","397","1","1");
+insert into livro (titulo,descricao,idioma,paginas,id_autor,id_editora) values ("livro2","o segundo livro a ser cadastrado","portugues","587",1,2);
+insert into livro (titulo,descricao,idioma,paginas,id_autor,id_editora) values ("livro 3","o terceiro livro a ser cadastrado","portugues","152",3,1);
+insert into livro (titulo,descricao,idioma,paginas,id_autor,id_editora) values ("livro 4","o quarto livro a ser cadastrado","portugues","986",3,3);
+insert into livro (titulo,descricao,idioma,paginas,id_autor,id_editora) values ("livro 5","o quinto livro a ser cadastrado","portugues","214",4,2);
+insert into livro (titulo,descricao,idioma,paginas,id_autor,id_editora) values ("livro 6","o sexto livro a ser cadastrado ","portugues","159",5,3);
+insert into livro (titulo,descricao,idioma,paginas,id_autor,id_editora) values ("livro 7","o setimo livro a ser cadastrado","portugues","258",6,4);
+insert into livro (titulo,descricao,idioma,paginas,id_autor,id_editora) values ("第 8 冊","第八本書要登記","chines","859",7,4);
+insert into livro (titulo,descricao,idioma,paginas,id_autor,id_editora) values ("livro 8","o setimo livro a ser cadastrado","portugues","298",5,7);
+insert into livro (titulo,descricao,idioma,paginas,id_autor,id_editora) values ("livro 9","o setimo livro a ser cadastrado","portugues","558",7,5);
+insert into livro (titulo,descricao,idioma,paginas,id_autor,id_editora) values ("dsadasdsadsa","o setimo ldsadsaivro a ser cadastrado","portugues","558",99,99);
+insert into livro (titulo,descricao,idioma,paginas,id_autor,id_editora) values ("dsadasdsadsa","livro cadastrado ERRADO ! ","portugues","558",999,999);
+
+select * from editora as e
+inner join livro as l 
+on e.id_editora = l.id_editora;
+
+select l.titulo,e.nome from editora as e
+inner join livro as l 
+on e.id_editora = l.id_editora;
+
+select * from autor as a
+inner join livro as l 
+on a.id_autor = l.id_autor; 
+
+select a.nome,l.titulo from autor as a 
+inner join livro as l 
+on a.id_autor = l.id_autor
+order by a.nome asc;
+ 
+select autor.nome,autor.email,livro.titulo,livro.idioma,livro.paginas,editora.nome
+from autor inner join livro 
+on autor.id_autor = livro.id_autor
+inner join editora 
+on editora.id_editora = livro.id_editora;
+
+
+desc livro;
+
+
+alter table livro add column id_autor int not null ; 
+alter table livro add column id_editora int not null;
+create table autor (
+	id_autor int not null auto_increment,
+    nome varchar(100) not null,
+    email varchar(100) not null,
+    constraint primary key (id_autor) 
+    
+);
+
+insert into autor (nome,email) values ("autor 1","emailaut1@hotmail.com");
+insert into autor (nome,email) values ("autor 2","emailaut2@hotmail.com");
+insert into autor (nome,email) values ("autor 3","emailaut3@hotmail.com");
+insert into autor (nome,email) values ("autor 4","emailaut4@hotmail.com");
+insert into autor (nome,email) values ("autor 5","emailaut5@hotmail.com");
+insert into autor (nome,email) values ("autor 6","emailaut6@hotmail.com");
+insert into autor (nome,email) values ("autor zé","zé@hotmail.com");
+insert into autor (nome,email) values ("autorerros","erro@hotmail.com");
+insert into autor (nome,email) values ("maisumautor","maisum@hotmail.com");
+
+create table editora(
+	id_editora int not null auto_increment,
+    nome varchar(100) not null,
+    cnpj char(14) not null,
+    cidade varchar(100) not null,
+    constraint primary key (id_editora)
+    
+); 
+
+select * from livro;
+
+select  editora.nome,editora.cidade,editora.cnpj,livro.titulo,livro.idioma,livro.id_autor
+from editora inner join livro 
+on editora.id_editora = livro.id_editora;
+
+show tables;
+
+select  editora.nome,editora.cidade,editora.cnpj,livro.titulo,livro.idioma,livro.id_autor
+from editora right join livro 
+on editora.id_editora = livro.id_editora
+union
+select  editora.nome,editora.cidade,editora.cnpj,livro.titulo,livro.idioma,livro.id_autor
+from editora left join livro 
+on editora.id_editora = livro.id_editora;
+
+
+desc autor;
+desc livro;
+desc editora; 
+
+
+select autor.nome,livro.titulo,editora.nome
+from autor inner join livro 
+on autor.id_autor = livro.id_autor
+inner join editora
+on livro.id_editora = editora.id_editora;
+
+
+select * from editora;
+insert into editora (nome,cnpj,cidade) values("editora 1","00012458658","Campo Grande");
+
+insert into editora (nome,cnpj,cidade) values("editora 2","1545165468","Rio de janeiro" );
+
+insert into editora (nome,cnpj,cidade) values("editora 3","5798132168","amazonas");
+
+insert into editora (nome,cnpj,cidade) values("editora 4","579846516","rio de janeiro");
+
+insert into editora (nome,cnpj,cidade) values("editora 5","84561325","Sao paulo"); 
+
+create database fabrica276;
+
+create table colaborador (
+
+	id_colaborador int not null auto_increment,
+    matricula varchar (4) not null,
+    nome varchar(100) not null ,
+    cpf varchar(20) unique not null,
+    email varchar(100) not null ,
+    data_nasc date not null,
+    data_admissao date not null,
+    funcao varchar(100) not null,
+    salario decimal(10,2),
+    endereco varchar(100) not null,
+    cep varchar(20) not null,
+    cidade varchar(100) not null, 
+    estado varchar(100) default "MS" not null ,
+    sexo enum ('F','M','O'),
+     constraint primary key (id_colaborador)
+		
+
+); 
+
+select * from colaborador ;
+
+insert into colaborador (matricula,nome,cpf,email,data_nasc,data_admissao,funcao,salario,endereco,cep,cidade,estado,sexo) values ("3372","Aleatorio sem cargo","994.958.950-81","aleatorio_sem_cargo@hotmail.com","1942-10-09","2022-10-15","","-8000","Rua Eunice dssos Reis Toledo","19097-575","Presidente Prudente","SP","M");
+insert into colaborador (matricula,nome,cpf,email,data_nasc,data_admissao,funcao,salario,endereco,cep,cidade,estado,sexo) values ("3293","Andre Fellype Azevedo Da Silva Oliveira","143.163.100-03","coelhojogos@hotmail.com","2000-10-03","2022-10-15","Aluno","0","Rua Antônio Diogo","60182-532","Fortaleza","CE","M");
+insert into colaborador (matricula,nome,cpf,email,data_nasc,data_admissao,funcao,salario,endereco,cep,cidade,estado,sexo) values ("3334","Aparecido Felix Marinho Junior","609.130.620-06","Aparecido@hotmail.com","2003-12-31","2022-10-18","Aluno","0","Travessa Lagoa Salgada","59135-707","Natal","RN","M");
+insert into colaborador (matricula,nome,cpf,email,data_nasc,data_admissao,funcao,salario,endereco,cep,cidade,estado,sexo) values ("3338","Arthur Augusto Coelho Frantz","374.701.210-80","coelhojogos@hotmail.com","2000-10-03","2022-10-18","Aluno","0","Travessa dos carpinteiros","59135-707","Campo Grande","MS","M");
+insert into colaborador (matricula,nome,cpf,email,data_nasc,data_admissao,funcao,salario,endereco,cep,cidade,estado,sexo) values ("6301","Arthur Simões De Andrade Teixeira","550.510.230-10","jotge123hhh@gmail.com","2009-09-09","2009-09-09","Aluno","-1500","Rua Cândido Anastácio Tomaselli","89257-155","Campo Grande","MS","M");
+insert into colaborador (matricula,nome,cpf,email,data_nasc,data_admissao,funcao,salario,endereco,cep,cidade,estado,sexo) values ("3352","Emanuel Chagas Araujo","896.495.210-38","Emanuel@gmail.com","2009-09-09","2009-09-09","Aluno","0","Rua Sargento Oséas Costa","57017-670","Campo Grande","MS","M");
+insert into colaborador (matricula,nome,cpf,email,data_nasc,data_admissao,funcao,salario,endereco,cep,cidade,estado,sexo) values ("3479","Emanuelle Maria Da Costa Alexandre","655.785.170-56","Emanuele@gmail.com","2009-09-09","2009-09-09","Aluno","0","Rua Sargento Oséas Costa","57017-670","Campo Grande","MS","M");
+insert into colaborador (matricula,nome,cpf,email,data_nasc,data_admissao,funcao,salario,endereco,cep,cidade,estado,sexo) values ("7433","Guilherme carvalho schuindt","484.214.990-68","Guilherme@gmail.com","2009-09-09","2009-09-09","Aluno","0","Rua Piracicaba","78070-570","Campo Grande","MS","M");
+insert into colaborador (matricula,nome,cpf,email,data_nasc,data_admissao,funcao,salario,endereco,cep,cidade,estado,sexo) values ("8322","Igor savioli Albieri","733.564.590-58","Igor@gmail.com","2009-09-09","2009-09-09","Aluno","0","Quadra Quadra 56","72922-231","Campo Grande","MS","M");
+insert into colaborador (matricula,nome,cpf,email,data_nasc,data_admissao,funcao,salario,endereco,cep,cidade,estado,sexo) values ("6582","Isabella Dáurea martins ribeiro","677.636.930-53","Isabella@gmail.com","2009-09-09","2009-09-09","Aluno","0","Rua Santa Cruz","29122-310","Campo Grande","MS","M");
+insert into colaborador (matricula,nome,cpf,email,data_nasc,data_admissao,funcao,salario,endereco,cep,cidade,estado,sexo) values ("5471","IZaltino Ojeda pereira","706.038.290-90","Izaltino@gmail.com","2009-09-09","2009-09-09","Aluno","0","Rua Engenheiro Sena Machado","64039-070","Campo Grande","MS","M");
+insert into colaborador (matricula,nome,cpf,email,data_nasc,data_admissao,funcao,salario,endereco,cep,cidade,estado,sexo) values ("6643","Joceyr Gomes Martins","909.213.720-00","Joceir@gmail.com","2009-09-09","2009-09-09","Aluno","0","Rua Otávio Rocha","94020-120","Campo Grande","MS","M");
+insert into colaborador (matricula,nome,cpf,email,data_nasc,data_admissao,funcao,salario,endereco,cep,cidade,estado,sexo) values ("3480","João carlos Gil","445.189.020-92","JÃOCARLOS@gmail.com","2009-09-09","2009-09-09","Aluno","0","Quadra Quadra 103 Área Especial 1","72600-330","Brasília","DF","M");
+insert into colaborador (matricula,nome,cpf,email,data_nasc,data_admissao,funcao,salario,endereco,cep,cidade,estado,sexo) values ("7438","Joao pedro jara duprat","242.060.730-90","JÃOpedro@gmail.com","2009-09-09","2009-09-09","Aluno","0","Rua Manoel Nobres","78125-440","Várzea Grande","MT","M");
+insert into colaborador (matricula,nome,cpf,email,data_nasc,data_admissao,funcao,salario,endereco,cep,cidade,estado,sexo) values ("5167","Kelwyn matias minho","235.502.180-52","Kelwyn@gmail.com","2009-09-09","2009-09-09","Aluno","0","Rua José Antônio Pereira 1518","79002-930","Campo Grande","Ms","M");
+insert into colaborador (matricula,nome,cpf,email,data_nasc,data_admissao,funcao,salario,endereco,cep,cidade,estado,sexo) values ("5812","Leandro cavalcante ribas","499.150.170-90","Leandro@gmail.com","2009-09-09","2009-09-09","Aluno","0","Rua Heitor Laburú","79042-080","Campo Grande","Ms","M");
+insert into colaborador (matricula,nome,cpf,email,data_nasc,data_admissao,funcao,salario,endereco,cep,cidade,estado,sexo) values ("6585","Luiz Guilherme Chimenes","915.790.920-20","LUIZ@gmail.com","2009-09-09","2009-09-09","Aluno","0","Rodovia do Tapanã","84264-410","Campo Grande","Ms","O");
+insert into colaborador (matricula,nome,cpf,email,data_nasc,data_admissao,funcao,salario,endereco,cep,cidade,estado,sexo) values ("5883","Mario soares neto","121.404.830-73","Marioneto@gmail.com","2009-09-09","2009-09-09","Aluno","0","Rua Osvaldo Santiago","55604-020","Campo Grande","Ms","O");
+insert into colaborador (matricula,nome,cpf,email,data_nasc,data_admissao,funcao,salario,endereco,cep,cidade,estado,sexo) values ("5993","Paulo eduardo jacob de andrade ","161.154.430-08","Paulo<RENES@gmail.com","2009-09-09","2009-09-09","Aluno","0","Rua João Murilo Leite","58037-548","Campo Grande","Ms","O");
+insert into colaborador (matricula,nome,cpf,email,data_nasc,data_admissao,funcao,salario,endereco,cep,cidade,estado,sexo) values ("4876","rONEY hUDSON vALENTIM FAGUNDES MOREIRA","093.794.520-04","HUDSON@gmail.com","2009-09-09","2009-09-09","Aluno","0","Rua Vinte e Nove","64041-150","Campo Grande","Ms","O");
+insert into colaborador (matricula,nome,cpf,email,data_nasc,data_admissao,funcao,salario,endereco,cep,cidade,estado,sexo) values ("3321","tAYNARA MARTINES FERREIRA","035.390.400-72","tay@gmail.com","2009-09-09","2009-09-09","Aluno","0","Rua Manaus","65907-160","Campo Grande","Ms","O");
+insert into colaborador (matricula,nome,cpf,email,data_nasc,data_admissao,funcao,salario,endereco,cep,cidade,estado,sexo) values ("3495","THIAGO DOS SANTOS","133.193.450-87","THIAGO123@gmail.com","2009-09-09","2009-09-09","Aluno","0","Travessa Fialho","69907-512","Campo Grande","Ms","O");
+insert into colaborador (matricula,nome,cpf,email,data_nasc,data_admissao,funcao,salario,endereco,cep,cidade,estado,sexo) values ("8320","vINICIUS MARTINS","344.175.120-51","MAINIRELAMONOSEMBRAÇO@gmail.com","2009-09-09","2009-09-09","Aluno","0","Vila São Pedro","66050-710","Campo Grande","Ms","O");
+insert into colaborador (matricula,nome,cpf,email,data_nasc,data_admissao,funcao,salario,endereco,cep,cidade,estado,sexo) values ("8068","wANDERLEY TERRA","319.602.670-19","CARADOSHABURG@gmail.com","2009-09-09","2009-09-09","Aluno","0","Estrada Capim Melado","26176-090","Campo Grande","Ms","O");
+
+
+
+use fabrica276 ; 
+
+show databases ; 
+
+use cadastro ;
+
+use garagem ; 
+
+show tables;
+
+use biblioteca; 
+
+show tables ;  
+
+select * from colaborador;
+ 
+use fabrica276 ;  
+
+
+
+create table departamento (
+	id_departamento int not null auto_increment  primary key ,
+    nome_departamento varchar (100)
+
+);
+
+create table cargo (
+	id_cargo int not null auto_increment  primary key ,
+    nome_cargo varchar (100),
+    id_departamento int not null
+
+);
+
+create table dependente (
+	id_dependente int not null auto_increment  primary key ,
+    certidao char (10),
+    nome varchar(45),
+    idade int (3),
+    id_colaborador int (100) not null 
+); 
+
+
+describe dependente ;
+select * from dependente;
+insert into dependente (certidao,nome,idade,id_colaborador) values ("454621","MANO YI","2010/05/03",1);
+insert into dependente (certidao,nome,idade,id_colaborador) values ("666","ATROX","2012/01/04",2);
+insert into dependente (certidao,nome,idade,id_colaborador) values ("89657","IRELIA","2013/07/13",3);
+insert into dependente (certidao,nome,idade,id_colaborador) values ("132654","RIVEN","2014/02/07",3);
+insert into dependente (certidao,nome,idade,id_colaborador) values ("879811","DRAVEN","2014/04/23",2);
+insert into dependente (certidao,nome,idade,id_colaborador) values ("789513425","JINX","2012/07/18",5);
+
+
+
+insert into cargo (nome_cargo,id_departamento) values ("agiota","1");
+insert into departamento (nome_departamento) values ("O LENDARIO DEPARTAMENTO VAZIO ! "); 
+select * from cargo;
+select * from colaborador ;
+select * from departamento ;
+
+update colaborador  set salario = 6999  where id_colaborador = 23 ; 
+
+insert into departamento (nome_departamento) values ("cozinha"),("limpeza"),("juridico"),("coordenacao"),("secretaria"),("diretoria"),("tecnologia"),("padagogico"),("producao") ;
+insert into cargo (nome_cargo , id_departamento) values ("cozinheira", "2" ),("fexineira", "3"),("acessor", "4"),("cordenador", "5" ),("secretaria", "6"),("diretor", "7"),("web designer", "8"),("professor", "9"),("desenvolvedor","8");
+update colaborador  set sexo="F"  where id_colaborador = 21 ; 
+alter table dependente modify column idade date not null;
+
+alter table colaborador add column id_cargo int ;
+alter table colaborador add column id_departamento int ;
+
+select * from colaborador ;
+
+show tables; 
+
+select * from dependente;
+
+
+select colaborador.id_colaborador,colaborador.nome,cargo.nome_cargo 
+from colaborador inner join cargo
+on colaborador.id_cargo = cargo.id_cargo;
+
+select colaborador.id_colaborador,colaborador.nome,colaborador.id_departamento
+from colaborador inner join departamento
+on colaborador.id_departamento = departamento.id_departamento;
+
+select colaborador.id_colaborador,colaborador.nome,dependente.nome,dependente.id_colaborador
+from colaborador inner join dependente 
+on colaborador.id_colaborador = dependente.id_colaborador; 
+
+select * from colaborador;
+
+select colaborador.nome,cargo.nome_cargo,departamento.nome_departamento
+from colaborador inner join cargo 
+on colaborador.id_cargo = cargo.id_cargo 
+inner join departamento 
+on colaborador.id_departamento = departamento.id_departamento; 
+
+select colaborador.nome,colaborador.id_cargo
+from colaborador inner join cargo 
+on colaborador.id_cargo = ; 
+
+SELECT c.*
+FROM colaborador c
+LEFT JOIN cargo cg ON c.id_cargo = cg.id_cargo
+WHERE cg.id_cargo IS NULL;
+
+
+select colaborador.nome,colaborador.id_cargo
+from colaborador
+left join cargo 
+on colaborador.id_cargo = cargo.id_cargo where colaborador.id_cargo is NULL ; 
+
+select colaborador.nome,colaborador.id_departamento
+from colaborador
+right join departamento 
+on colaborador.id_departamento = departamento.id_departamento where departamento.id_departamento is null ; 
+
+delete from departamento 
+where id_departamento=12;
+
+show tables ; 
+select * from cargo;
+select * from departamento;
+
+select * from colaborador;
+
+SELECT c.*, d.*
+FROM colaborador c
+RIGHT JOIN departamento d ON c.id_departamento = d.id_departamento
+WHERE c.id_departamento IS NULL; 
+
+select colaborador.*,departamento.*
+from colaborador 
+right join departamento on colaborador.id_departamento = departamento.id_departamento
+where colaborador.id_departamento is null;
+
+
+select colaborador.*,dependente.*
+from colaborador 
+left join dependente on colaborador.id_colaborador = dependente.id_colaborador 
+where dependente.id_colaborador is null; 
+
+
+ALTER TABLE dependente
+modify COLUMN id_colaborador int (100) ;
+
+SELECT colaborador.nome,salario
+FROM colaborador
+WHERE nome LIKE 'J%';
+
+SELECT colaborador.nome,salario
+FROM colaborador
+WHERE nome LIKE '%a';
+
+select count(*) as id_colaborador 
+from colaborador; 
+
+select min(salario) as colaborador
+from colaborador;
+
+
+SELECT min(DATE(idade)) AS idade
+FROM dependente; 
+
+select sum(salario)/count(id_colaborador) as media 
+from colaborador; 
+
+select * from colaborador
+where (datediff(current_date,idade));  
+
+
+select idade ,count(*) as quantidade from 
+(select id_colaborador,round(datediff(current_date, date_nasc)/365)as idade from colaborador) as poçoca
+grup
+
+
+
+
+select * from colaborador ;
+
+select * from dependente;
+
+
+
+
+create database Netflix ;  
+
+use Netflix ;  
+
+drop table play;
+
+
+create table play (
+	id_play int not null auto_increment primary key,
+    data_assistida datetime default current_timestamp(),
+	id_usuario int ,
+	id_serie int
+    
+
+); 
+
+desc play;
+drop table play;
+select * from play;
+show tables ; 
+
+create table series (
+	id_serie int not null auto_increment primary key, 
+    nome varchar(100),
+    sinopse varchar(100),
+    temporadas smallint
+
+); 
+
+drop table usuarios ;
+
+create table usuarios(
+	id_usuario int not null auto_increment primary key ,
+    cpf varchar (11),
+    nome varchar(100),
+    email varchar(100),
+    senha varchar(100)
+
+);
+
+
+insert into usuarios (cpf,nome,email,senha) values ("12345678985","arthur","emailaleatorio@hotmail.com","02120505*"); 
+
+-- Inserção 1
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("98765432101", "Maria", "maria@gmail.com", "abc123");
+
+-- Inserção 2
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("45678912345", "João", "joao@yahoo.com", "senha123");
+
+-- Inserção 3
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("54321678901", "Pedro", "pedro@gmail.com", "password");
+
+-- Inserção 4
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("98765432102", "Ana", "ana@hotmail.com", "qwerty");
+
+-- Inserção 5
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("32165498701", "Lucas", "lucas@gmail.com", "123456");
+
+-- Inserção 6
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("12378945601", "Mariana", "mariana@yahoo.com", "senha1234");
+
+-- Inserção 7
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("98765432103", "Carlos", "carlos@gmail.com", "abcxyz");
+
+-- Inserção 8
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("45632178901", "Larissa", "larissa@hotmail.com", "senha12345");
+
+-- Inserção 9
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("98765432104", "Fernando", "fernando@yahoo.com", "password123");
+
+-- Inserção 10
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("98732165401", "Gabriela", "gabriela@gmail.com", "testando");
+
+-- Inserção 11
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("98765432105", "Rafael", "rafael@hotmail.com", "123abc");
+
+-- Inserção 12
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("65498732101", "Julia", "julia@yahoo.com", "senha4321");
+
+-- Inserção 13
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("98765432106", "Luiz", "luiz@gmail.com", "qwe123");
+
+-- Inserção 14
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("98765412301", "Beatriz", "beatriz@hotmail.com", "abcdef");
+
+-- Inserção 15
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("78932165401", "Matheus", "matheus@gmail.com", "senha123456");
+
+-- Inserção 16
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("98765432107", "Isabela", "isabela@yahoo.com", "password1234");
+
+-- Inserção 17
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("98765412302", "Guilherme", "guilherme@gmail.com", "123qwe");
+
+-- Inserção 18
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("98765432108", "Camila", "camila@hotmail.com", "senha987");  
+
+-- Inserção 1
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("98765432101", "Maria", "maria@gmail.com", "abc123");
+
+-- Inserção 2
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("45678912345", "João", "joao@yahoo.com", "senha123");
+
+-- Inserção 3
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("54321678901", "Pedro", "pedro@gmail.com", "password");
+
+-- Inserção 4
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("98765432102", "Ana", "ana@hotmail.com", "qwerty");
+
+-- Inserção 5
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("32165498701", "Lucas", "lucas@gmail.com", "123456");
+
+-- Inserção 6
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("12378945601", "Mariana", "mariana@yahoo.com", "senha1234");
+
+-- Inserção 7
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("98765432103", "Carlos", "carlos@gmail.com", "abcxyz");
+
+-- Inserção 8
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("45632178901", "Larissa", "larissa@hotmail.com", "senha12345");
+
+-- Inserção 9
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("98765432104", "Fernando", "fernando@yahoo.com", "password123");
+
+-- Inserção 10
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("98732165401", "Gabriela", "gabriela@gmail.com", "testando");
+
+-- Inserção 11
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("98765432105", "Rafael", "rafael@hotmail.com", "123abc");
+
+-- Inserção 12
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("65498732101", "Julia", "julia@yahoo.com", "senha4321");
+
+-- Inserção 13
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("98765432106", "Luiz", "luiz@gmail.com", "qwe123");
+
+-- Inserção 14
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("98765412301", "Beatriz", "beatriz@hotmail.com", "abcdef");
+
+-- Inserção 15
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("78932165401", "Matheus", "matheus@gmail.com", "senha123456");
+
+-- Inserção 16
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("98765432107", "Isabela", "isabela@yahoo.com", "password1234");
+
+-- Inserção 17
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("98765412302", "Guilherme", "guilherme@gmail.com", "123qwe");
+
+-- Inserção 18
+INSERT INTO usuarios (cpf, nome, email, senha) VALUES ("98765432108", "Camila", "camila@hotmail.com", "senha987");
+
+-- Inserção 1
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("Breaking Bad", "Um professor de química se transforma em um poderoso chefão das drogas", 5);
+
+-- Inserção 2
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("Game of Thrones", "Uma batalha pelo Trono de Ferro em um mundo de fantasia", 8);
+
+-- Inserção 3
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("Friends", "Um grupo de amigos compartilha momentos engraçados e emocionantes em Nova York", 10);
+
+-- Inserção 4
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("Stranger Things", "Aventuras sobrenaturais de um grupo de crianças nos anos 80", 4);
+
+-- Inserção 5
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("Breaking Bad", "Um professor de química se transforma em um poderoso chefão das drogas", 5);
+
+-- Inserção 6
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("Sherlock", "Um detetive genial soluciona casos complexos em Londres", 4);
+
+-- Inserção 7
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("The Office", "Uma comédia que retrata o cotidiano de uma empresa de papel", 9);
+
+-- Inserção 8
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("Stranger Things", "Aventuras sobrenaturais de um grupo de crianças nos anos 80", 4);
+
+-- Inserção 9
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("Narcos", "A ascensão e queda do império do tráfico de drogas de Pablo Escobar", 3);
+
+-- Inserção 10
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("Black Mirror", "Contos futuristas que exploram os impactos da tecnologia na sociedade", 5);
+
+-- Inserção 11
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("Friends", "Um grupo de amigos compartilha momentos engraçados e emocionantes em Nova York", 10);
+
+-- Inserção 12
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("The Crown", "A história da rainha Elizabeth II e os desafios de seu reinado", 5);
+
+-- Inserção 13
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("Peaky Blinders", "Uma gangue de criminosos no pós-Primeira Guerra Mundial", 6);
+
+-- Inserção 14
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("Chernobyl", "Os eventos do desastre nuclear de Chernobyl em 1986", 1);
+
+-- Inserção 15
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("La Casa de Papel", "Um grupo de criminosos executa um grande assalto à Casa da Moeda da Espanha", 5);
+
+-- Inserção 16
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("The Witcher", "As aventuras do bruxo Geralt de Rivia em um mundo de fantasia", 2);
+
+-- Inserção 17
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("Stranger Things", "Aventuras sobrenaturais de um grupo de crianças nos anos 80", 4);
+
+-- Inserção 18
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("Money Heist", "Um grupo de criminosos executa um assalto à Casa da Moeda da Espanha", 5);
+
+-- Inserção 19
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("The Mandalorian", "As aventuras de um caçador de recompensas na galáxia de Star Wars", 3);
+
+-- Inserção 20
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("Breaking Bad", "Um professor de química se transforma em um poderoso chefão das drogas", 5);
+
+-- Inserção 21
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("Friends", "Um grupo de amigos compartilha momentos engraçados e emocionantes em Nova York", 10);
+
+-- Inserção 22
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("The Crown", "A história da rainha Elizabeth II e os desafios de seu reinado", 5);
+
+-- Inserção 23
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("Sherlock", "Um detetive genial soluciona casos complexos em Londres", 4);
+
+-- Inserção 24
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("Stranger Things", "Aventuras sobrenaturais de um grupo de crianças nos anos 80", 4);
+
+-- Inserção 25
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("Black Mirror", "Contos futuristas que exploram os impactos da tecnologia na sociedade", 5);
+
+-- Inserção 26
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("Game of Thrones", "Uma batalha pelo Trono de Ferro em um mundo de fantasia", 8);
+
+-- Inserção 27
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("The Office", "Uma comédia que retrata o cotidiano de uma empresa de papel", 9);
+
+-- Inserção 28
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("Narcos", "A ascensão e queda do império do tráfico de drogas de Pablo Escobar", 3);
+
+-- Inserção 29
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("Peaky Blinders", "Uma gangue de criminosos no pós-Primeira Guerra Mundial", 6);
+
+-- Inserção 30
+INSERT INTO series (nome, sinopse, temporadas) VALUES ("Stranger Things", "Aventuras sobrenaturais de um grupo de crianças nos anos 80", 4); 
+
+desc play ;
+
+-- Inserção 1
+INSERT INTO play (id_usuario, id_serie, data_assistida) VALUES (1, 1, '2023-06-20');
+
+-- Inserção 2
+INSERT INTO play (id_usuario, id_serie, data_assistida) VALUES (2, 3, '2023-06-19');
+
+-- Inserção 3
+INSERT INTO play (id_usuario, id_serie, data_assistida) VALUES (3, 2, '2023-06-18');
+
+-- Inserção 4
+INSERT INTO play (id_usuario, id_serie, data_assistida) VALUES (4, 4, '2023-06-17');
+
+-- Inserção 5
+INSERT INTO play (id_usuario, id_serie, data_assistida) VALUES (5, 1, '2023-06-16');
+
+-- Inserção 6
+INSERT INTO play (id_usuario, id_serie, data_assistida) VALUES (1, 5, '2023-06-15');
+
+-- Inserção 7
+INSERT INTO play (id_usuario, id_serie, data_assistida) VALUES (2, 7, '2023-06-14');
+
+-- Inserção 8
+INSERT INTO play (id_usuario, id_serie, data_assistida) VALUES (3, 6, '2023-06-13');
+
+-- Inserção 9
+INSERT INTO play (id_usuario, id_serie, data_assistida) VALUES (4, 9, '2023-06-12');
+
+-- Inserção 10
+INSERT INTO play (id_usuario, id_serie, data_assistida) VALUES (5, 8, '2023-06-11');
+
+-- Inserção 11
+INSERT INTO play (id_usuario, id_serie, data_assistida) VALUES (1, 11, '2023-06-10');
+
+-- Inserção 12
+INSERT INTO play (id_usuario, id_serie, data_assistida) VALUES (2, 10, '2023-06-09');
+
+-- Inserção 13
+INSERT INTO play (id_usuario, id_serie, data_assistida) VALUES (3, 13, '2023-06-08');
+
+-- Inserção 14
+INSERT INTO play (id_usuario, id_serie, data_assistida) VALUES (4, 12, '2023-06-07');
+
+-- Inserção 15
+INSERT INTO play (id_usuario, id_serie, data_assistida) VALUES (5, 15, '2023-06-06'); 
+
+
+#1
+select usuarios.id_usuario,usuarios.nome,play.id_play
+from usuarios inner join play
+on usuarios.id_usuario = play.id_usuario ;
+
+select usuarios.id_usuario,usuarios.nome,play.id_play
+from usuarios left join play
+on usuarios.id_usuario = play.id_usuario ;
+
+#2
+select play.id_serie,series.nome
+from play inner join series 
+on play.id_serie = series.id_serie;
+
+#3
+select usuarios.nome,series.id_serie,series.nome,data_assistida,usuarios.email,usuarios.senha
+from usuarios inner join play 
+on usuarios.id_usuario = play.id_usuario
+inner join series 
+on series.id_serie = play.id_serie;
+
+
+
+
+
+
+select * from usuarios;
+select * from series; 
+select * from play;
+
+#aula dia 27/06/2023 =======================================================================
+
+create database loja_carros;
+use loja_carros; 
+
+
+create table carros(
+
+	id_carro int not null, 
+    carro varchar(100),
+    marca varchar(100),
+    modelo varchar(100),
+	cor varchar(100),
+    ano year not null,
+    constraint primary key (id_carro)
+
+); 
+
+select * from carros ; 
+
+load data infile "C:/Users/fabrica.aluno3/Desktop/garagem/carros.csv"
+into table carros
+fields terminated by ','
+enclosed by '"'
+lines terminated by '/n'
+ignore 1 rows;  
+
+show variables like 'secure_file_priv';  
+
+
+
+show databases; 
+
+use Titanic;
+drop table  passengers ;
+show tables  ;  
+
+select * from passengers;
+
+
+#1
+select PassengerId,Name,Ticket
+from passengers
+where PassengerId = 144;
+
+#2 
+select count(*) FROM passengers  PassengerId where Age <= 18 ; 
+
+#3
+select count(*) from passengers where survived = 1;
+#sobreviventes 494
+#4
+select count(*) from passengers where survived = 0; 
+#morreram 815
+#5
+   
+
+show tables ; 
+
+
+#sem viw
+select * from passengers; 
+
+
+#view 1 
+create view vw_contas as 
+select PassengerId,name,sex,age,Fare from passengers;
+
+show tables; 
+
+select * from vw_contas; 
+
+alter view vw_contas as select PassengerId,name,sex,age,Fare,Embarked from passengers ;  
+
+select PassengerId,name,age
+from vw_contas 
+where age > 18 and age != "" ; 
+
+#Delimiter 
+
+#==============================   
+
+#utilizar Delimiter  ======================================
+
+CREATE DATABASE cadastro2 ;
+use cadastro2 ; 
+
+
+
+create table pessoa (
+	
+    id_pessoa int not null auto_increment,
+    nome varchar(100),
+    data_cadastro datetime,
+    cpf char(11) not null,
+    constraint primary key (id_pessoa)
+        
+); 
+
+show tables;
+
+DELIMITER $$ 
+
+Create Procedure sp_pessoa_save6(pnome varchar(100),pcad datetime,pcpf char(11))
+
+begin 
+
+insert into pessoa values (null,pnome,pcad,pcpf);
+select * from pessoa where id_pessoa = last_insert_id();
+
+end  $$
+
+DELIMITER ;
+use Titanic;
+call sp_pessoa_save6("Thiaaago Almeida",current_date(),"2156455621");
+
+call sp_pessoa_save6("Jao",current_date(),"21544555521");
+
+call sp_pessoa_save6("pedro",current_date(),"6154455621");
+
+call sp_pessoa_save6("Arthur",current_date(),"9194455621");
+
+call sp_pessoa_save6("zé",current_date(),"1154455621");
+
+call sp_pessoa_save6("bruna",current_date(),"3154455621");
+
+call sp_pessoa_save6("Maria",current_date(),"5154455621");
+
+call sp_pessoa_save6("igor",current_date(),"2254455621");
+
+call sp_pessoa_save6("vinicius",current_date(),"2354455621");
+
+call sp_pessoa_save6("Arthur Frantz",current_date(),"2454455621"); 
+
+call sp_pessoa_save6("Arthur Frantz 2.0",current_date(),"2654455621");  
+
+show tables;
+
+select user from mysql.user; 
+
+show grants;
+
+
+
+select * from pessoa;
+
+
+
+
+
+
+use fabrica276;
+
+show tables ; 
+
+
+select * from colaborador ; 
+
+
+create trigger soma_comissao before insert 
+on colaborador for each row 
+set new.comissao = (new.salario * 1.1);
+
+
+insert into colaborador (matricula,nome,cpf,email,data_nasc,data_admissao,funcao,salario,endereco,cep,cidade,estado,sexo) values ("3938","Arthsur Augusto Coelho Frantz","574.701.210-80","coel5hojogos@hotmail.com","2000-10-03","2022-10-18","Aluno","0","Travessa dos carpinteiros","59135-707","Campo Grande","MS","M");
+
+insert into colaborador (matricula,nome,cpf,email,data_nasc,data_admissao,funcao,salario,endereco,cep,cidade,estado,sexo) values ("5938","Arthssur Augusto Coelho Frantz","594.701.210-80","coel5hojogos@hotmail.com","2000-10-03","2022-10-18","Aluno","100000","Travessa dos carpinteiros","59135-707","Campo Grande","MS","M");
+
+insert into colaborador (matricula,nome,cpf,email,data_nasc,data_admissao,funcao,salario,endereco,cep,cidade,estado,sexo) values ("5968","Arthssu5r Augusto Coelho Frantz","982.701.210-80","coel55hojogos@hotmail.com","2000-10-03","2022-10-18","Aluno","2550","Travessa dos carpinteiros","59135-707","Campo Grande","MS","M");
+
+
+select * from colaborador;
+alter table colaborador add comissao int(100) ; 
+
+
+
+
+use teste ; 
+
+select * from user ; 
 
 
