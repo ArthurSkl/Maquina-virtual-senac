@@ -1359,7 +1359,486 @@ FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
+ 
+ 
+ 
+ 
+create database olimpiadas;
+use olimpiadas;
 
+CREATE TABLE atletas (
+id int not null auto_increment,
+nome varchar(40),
+modalidade varchar(40),
+idade int,
+peso decimal(5,2),
+altura decimal(3,2),
+medalhas int,
+nacionalidade char(3),
+constraint primary key (id)
+); 
+
+insert into atletas values (default, "Marcelo Huertas","Basquete",28,105,1.90,7,"BRA");
+insert into atletas values (default, "Takaro Nomura","Katate",31,79,1.80,17,"JPN");
+insert into atletas values (default, "Joseph Augustin","Karate",23,72,1.77,8,"FRA");
+insert into atletas values (default, "Sophie Dominique","Volei",23,70,1.79,12,"FRA");
+insert into atletas values (default, "Juan Carlos Angel","Volei",26,76,1.88,4,"ARG");
+insert into atletas values (default, "Manoel Hernandes","Judo",31,83,1.98,2,"ARG");
+insert into atletas values (default, "Amara Zuri","Basquete",32,86,1.95,1,"ZAF");
+insert into atletas values (default, "Kornelia Ender","Natação",27,69,1.76,9,"DEU");
+insert into atletas values (default, "Oscar Schmidt","Basquete",58,58,2.05,12,"BRA");
+insert into atletas values (default, "Natasha Hoffmann","Natação",25,69,1.78,10,"DEU");
+insert into atletas values (default, "Maria Fernandes","Handebol",26,75,1.79,11,"ESP");
+insert into atletas values (default, "Maria Mendonza","Handebol",29,64,1.68,15,"CUB");
+insert into atletas values (default, "Maria Carmen","Handebol",19,65,1.69,3,"ESP");
+insert into atletas values (default, "Elijah Philips","Remo",22,66,1.67,7,"USA");
+insert into atletas values (default, "Noah Oliver","Natação",30,101,1.98,8,"USA");
+insert into atletas values (default, "Mike James","Basquete",24,102,1.99,9,"USA");
+insert into atletas values (default, "Francesco Rossi","Basquete",34,100,1.90,11,"ITA");
+insert into atletas values (default, "Bohdan Beneys","Atletismo",30,89,1.82,10,"SWE");
+insert into atletas values (default, "Arnost Bedrich","Atletismo",21,75,1.83,13,"CZE");
+insert into atletas values (default, "Jose Rodriguez","Triatlo",23,88,1.84,1,"VEN"); 
+
+
+select * from atletas;  
+
+
+
+create function multiplica(a int, b int)
+returns int 
+deterministic
+return a * b; 
+
+create function adicao(a int, b int)
+returns int 
+deterministic
+return a + b;
+
+create function dividir(a int, b int)
+returns int 
+deterministic
+return a / b;  
+
+create function coisas (x int , y int ,b int )
+returns float
+deterministic
+return (x+y)/2;
+
+select coisas (10,20,2) as result;
+select multiplica(100,25) as result;
+select adicao (100,30) as result ; 
+select dividir (100,10) as result;
+
+select count(id) into @qnt from atletas;
+
+select @qnt; 
+
+select multiplica(@qnt,10) as contas; 
+
+select * from atletas; 
+
+
+select min(idade) from atletas ;
+select max(idade) from atletas ; 
+select avg(idade) from atletas ;
+select sum(idade) from atletas ;
+
+select nome from atletas where nacionalidade = "bra";   
+
+select sum(medalhas) as medalhas,nacionalidade
+from atletas group by nacionalidade
+order by medalhas desc; 
+
+select count(id) as numero, modalidade 
+from atletas group by modalidade; 
+
+select id,nome,modalidade,idade,peso from atletas;  
+
+
+select id,nome,modalidade,idade,(idade * 2) as dobro_da_idade,peso from atletas; 
+
+select id,nome,modalidade,idade,peso,(peso  / (altura * altura)) as imc from atletas; 
+
+
+ 
+
+alter table atletas add column cpf char (11);
+
+update atletas set cpf = "111111" where id >= 1; 
+
+
+create view vw_tabela_fake 
+as select id,nome,modalidade,idade,peso from atletas; 
+
+
+select * from vw_tabela_fake;
+ 
+ 
+
+
+select nome from atletas where medalhas = max(medalhas); 
+
+
+select nome,idade,peso,altura from atletas;  
+
+
+
+
+create database e_commerce;
+
+create table cliente (
+	
+    id_cliente int primary key , 
+    nome varchar(100),
+    email varchar(100),
+    cpf char(11),
+    endereco varchar(150),
+    cidade varchar(100),
+    estado char(2),
+    data_nasc date
+
+); 
+drop table cliente ;
+
+create table pedido(
+
+	id_pedido int primary key,
+    id_cliente int,
+    status varchar(50),
+    data_pedido date,
+    constraint foreign key (id_cliente) references cliente (id_cliente) 
+
+);
+
+drop table pedido ; 
+
+alter table modify column id_pedido int primary key auto_increment; 
+
+create table pedido_item (
+
+	id_pedido_item int primary key, 
+    quantidade int,
+    id_pedido int,
+    id_produto int,
+    constraint foreign key (id_pedido) references pedido (id_pedido),
+    constraint foreign key (id_produto) references  produto (id_produto)
+	
+); 
+
+
+
+create table produto (
+
+	id_produto int primary key,
+    nome varchar(100),
+    descricao text,
+    categoria varchar(50),
+    preco decimal(10,2),
+    estoque int(5)
+
+); 
+
+
+
+
+create table cliente(
+	id_cliente int not null auto_increment, 
+	nome varchar(100) not null, 
+	email varchar(100) not null, 
+	cpf char(12) not null, 
+	endereco varchar(100) not null, 
+	cidade varchar(100) not null, 
+	estado char(2), 
+	data_nasc date not null,
+	constraint primary key(id_cliente)
+);
+
+
+
+create database ecomerce;
+
+use ecomerce;
+
+
+create table cliente(
+	id_cliente int not null auto_increment, 
+	nome varchar(100) not null, 
+	email varchar(100) not null, 
+	cpf char(12) not null, 
+	endereco varchar(100) not null, 
+	cidade varchar(100) not null, 
+	estado char(2), 
+	data_nasc date not null,
+	constraint primary key(id_cliente)
+);
+
+create table produto (
+	id_produto int not null auto_increment, 
+	nome varchar(100) not null, 
+	descricao text not null, 
+	categoria varchar(50) not null,
+	preco decimal(10,2) not null, 
+	estoque int(5) not null,
+    constraint primary key(id_produto)
+); 
+
+
+CREATE TABLE pedido(
+	id_pedido int not null auto_increment,
+	id_cliente int not null,
+	status varchar(50) not null,
+	data_pedido date,
+    constraint primary key (id_pedido),
+    constraint foreign key fk_cliente (id_cliente) references cliente (id_cliente)
+);
+
+
+CREATE TABLE pedido_item(
+	id_pedido_item int not null auto_increment,
+	id_pedido int not null,
+	id_produto int not null,
+	quantidade int not null,
+    constraint primary key (id_pedido_item,id_pedido),
+    constraint foreign key fk_produto (id_produto) references produto(id_produto)
+);
+
+select * from cliente ; 
+
+
+
+insert into cliente (id_cliente, nome, email, cpf, endereco, cidade, estado, data_nasc) values (1, 'Ana Silva', 'anasilva@codandosimples.com', '12345678911', 'Rua Bahia, 10', 'Curitiba', 'PR', '1990-10-25');
+insert into cliente (id_cliente, nome, email, cpf, endereco, cidade, estado, data_nasc) values (2, 'Roberto Nunes', 'ronunes@codandosimples.com', '32165498722', 'Rua Amazonas, 280', 'Campinas', 'SP', '1992-8-6');
+insert into cliente (id_cliente, nome, email, cpf, endereco, cidade, estado, data_nasc) values (3, 'Paula Oliveira', 'paula123@codandosimples.com', '98765432188', 'Rua Castro Alves, 50', 'Valinhos', 'SP', '1989-10-15');
+insert into cliente (id_cliente, nome, email, cpf, endereco, cidade, estado, data_nasc) values (4, 'Carlos Santos', 'carlos@codandosimples.com', '18865498732', 'Rua Santa Rita, 147', 'Barbacena', 'MG', '1985-5-20');
+insert into cliente (id_cliente, nome, email, cpf, endereco, cidade, estado, data_nasc) values (5, 'Roberta Marques', 'romarques@codandosimples.com', '45691198732', 'Rua Boa Vista, 56', 'Ipatinga', 'MG', '1983-11-4');
+insert into cliente (id_cliente, nome, email, cpf, endereco, cidade, estado, data_nasc) values (6, 'Júnior Soares', 'jusoares@codandosimples.com', '33372298755', 'Rua das Flores, 144', 'Londrina', 'PR', '1993-11-25');
+insert into cliente (id_cliente, nome, email, cpf, endereco, cidade, estado, data_nasc) values (7, 'Guilherme Campos', 'campos123@codandosimples.com', '52861645016', 'Rua Pernambuco, 33', 'Cianorte', 'PR', '1990-5-22');
+insert into cliente (id_cliente, nome, email, cpf, endereco, cidade, estado, data_nasc) values (8, 'Larissa Mello', 'lamello@codandosimples.com', '37045719035', 'Rua 10, 66', 'Niterói', 'RJ', '1991-10-8');
+insert into cliente (id_cliente, nome, email, cpf, endereco, cidade, estado, data_nasc) values (9, 'Lucas da Silva', 'lusilva@codandosimples.com', '33219536093', 'Rua Santos Dumont, 1740', 'Parati', 'RJ', '1983-8-15');
+insert into cliente (id_cliente, nome, email, cpf, endereco, cidade, estado, data_nasc) values (10, 'Mariana Freitas', 'mafreitas@codandosimples.com', '42171284013', 'Rua Tiradentes, 12', 'Joinville', 'SC', '1990-10-21');
+insert into cliente (id_cliente, nome, email, cpf, endereco, cidade, estado, data_nasc) values (11, 'Vanessa Soares', 'van11@codandosimples.com', '43444622031', 'Rua das Orquídeas, 77', 'Blumenau', 'SC', '1979-11-28');
+insert into cliente (id_cliente, nome, email, cpf, endereco, cidade, estado, data_nasc) values (12, 'Luiza Ferreira', 'luizafer@codandosimples.com', '49714415063', 'Rua Treze, 1100', 'Florianópolis', 'SC', '1977-6-15');
+insert into cliente (id_cliente, nome, email, cpf, endereco, cidade, estado, data_nasc) values (13, 'Marcos Souza', 'marco@codandosimples.com', '11971259063', 'Rua Portes, 345', 'Coxim', 'MS', '1976-7-23');
+insert into cliente (id_cliente, nome, email, cpf, endereco, cidade, estado, data_nasc) values (14, 'Sebastião Araújo', 'bastiao@codandosimples.com', '49691363003', 'Avenida Brasil, 67', 'Dourados', 'MS', '1975-4-17');
+insert into cliente (id_cliente, nome, email, cpf, endereco, cidade, estado, data_nasc) values (15, 'Francisco da Silva', 'chico@codandosimples.com', '60117796034', 'Avenida da Saudade, 788', 'Bataguassu', 'MS', '1974-8-5');
+
+
+
+select * from produto;
+
+insert into produto (id_produto, nome, descricao, categoria, preco, estoque) values (1, 'Computador', 'Computador Gamer 8 Nucleos', 'Informatica', 2600, 15);
+insert into produto (id_produto, nome, descricao, categoria, preco, estoque) values (2, 'Celular', 'Celular Dualchip', 'Eletronico', 1250, 99);
+insert into produto (id_produto, nome, descricao, categoria, preco, estoque) values (3, 'Ventilador', 'Ventilador 4 velocidades', 'Eletrodomestico', 180.90,58);
+insert into produto (id_produto, nome, descricao, categoria, preco, estoque) values (4, 'Televisor', 'Televisor Smart 42 pol.', 'Eletroeletronico', 1750.60,48);
+insert into produto (id_produto, nome, descricao, categoria, preco, estoque) values (5, 'Mouse', 'Mouse sem fio', 'Informatica', 38,127);
+insert into produto (id_produto, nome, descricao, categoria, preco, estoque) values (6, 'Bicicleta', 'Bicicleta Mtb Aro 29', 'Esporte', 1360,39);
+insert into produto (id_produto, nome, descricao, categoria, preco, estoque) values (7, 'Geladeira', 'Geladeira Duplex', 'Eletrodomestico', 2230.0,85);
+insert into produto (id_produto, nome, descricao, categoria, preco, estoque) values (8, 'Ar condicionado', 'Ar Condicionado Split 12000 Btus', 'Eletrodomestico', 1890.0,23);
+insert into produto (id_produto, nome, descricao, categoria, preco, estoque) values (9, 'Raquete de tênis', 'Raquete de tênis Graphene 360+', 'Esporte', 670.0,17);
+insert into produto (id_produto, nome, descricao, categoria, preco, estoque) values (10, 'Sofá', 'Sofá Retrátil e Reclinável', 'Moveis', 1245.0,6);
+insert into produto (id_produto, nome, descricao, categoria, preco, estoque) values (11, 'Cama box', 'Cama box conjugado casal', 'Moveis', 580.0, 11);
+insert into produto (id_produto, nome, descricao, categoria, preco, estoque) values (12, 'Mesa', 'Mesa de jantar c/ 4 cadeiras', 'Moveis', 480.0, 5);
+insert into produto (id_produto, nome, descricao, categoria, preco, estoque) values (13, 'Microfone', 'Microfone condensador', 'Eletronico', 380.0,8);
+insert into produto (id_produto, nome, descricao, categoria, preco, estoque) values (14, 'Mesa de tênis', 'Mesa de tênis ping pong', 'Esporte', 723.0,12);
+insert into produto (id_produto, nome, descricao, categoria, preco, estoque) values (15, 'Cafeteira', 'Cafeteira expresso automática', 'Eletrodomestico', 450.0,16); 
+
+
+
+
+insert into pedido values (default,6,"Pendente","2022-05-06");
+insert into pedido values (default,6,"Finalizado","2022-05-08");
+insert into pedido values (default,3,"Finalizado","2022-06-10");
+insert into pedido values (default,4,"Pendente","2022-06-28");
+insert into pedido values (default,4,"Finalizado","2022-07-27");
+insert into pedido values (default,2,"Pendente","2022-07-25");
+insert into pedido values (default,8,"Finalizado","2022-05-12");
+insert into pedido values (default,9,"Finalizado","2022-06-11");
+insert into pedido values (default,10,"Finalizado","2022-06-10");
+insert into pedido values (default,13,"Pendente","2022-07-21");
+insert into pedido values (default,14,"Finalizado","2022-05-27");
+insert into pedido values (default,14,"Finalizado","2022-05-25");  
+
+
+
+
+insert into pedido_item (id_pedido_item, id_pedido,id_produto,quantidade) values (default,1,14,1);
+insert into pedido_item (id_pedido_item, id_pedido,id_produto,quantidade) values (default,2,15,1);
+insert into pedido_item (id_pedido_item, id_pedido,id_produto,quantidade) values (default,3,7,3);
+insert into pedido_item (id_pedido_item, id_pedido,id_produto,quantidade) values (default,4,4,4);
+insert into pedido_item (id_pedido_item, id_pedido,id_produto,quantidade) values (default,5,1,2);
+insert into pedido_item (id_pedido_item, id_pedido,id_produto,quantidade) values (default,6,8,3);
+insert into pedido_item (id_pedido_item, id_pedido,id_produto,quantidade) values (default,7,10,2);
+insert into pedido_item (id_pedido_item, id_pedido,id_produto,quantidade) values (default,8,11,1);
+insert into pedido_item (id_pedido_item, id_pedido,id_produto,quantidade) values (default,9,3,6);
+insert into pedido_item (id_pedido_item, id_pedido,id_produto,quantidade) values (default,10,4,3);
+insert into pedido_item (id_pedido_item, id_pedido,id_produto,quantidade) values (default,11,2,5);
+insert into pedido_item (id_pedido_item, id_pedido,id_produto,quantidade) values (default,12,1,2);
+insert into pedido_item (id_pedido_item, id_pedido,id_produto,quantidade) values (default,12,4,2);
+
+
+
+select * from produto; 
+
+#ex 1 =====
+
+select nome,categoria from produto 
+where  categoria = "Informatica"; 
+
+
+#ex 2 ====== 
+
+select nome,categoria,estoque from produto
+where estoque > 50; 
+
+#ex 3 ======= 
+
+select nome,preco from produto
+where preco > 1000;
+ 
+
+#ex4 ======
+
+select * from cliente;
+
+select nome, data_nasc from cliente 
+where data_nasc like '199%';
+
+#ex5 =======
+
+select * from pedido;
+select * from cliente;
+
+select nome,estado from cliente
+where estado like 'ms' or  estado like 'sp'; 
+
+#ex6 ======= 
+select cliente.nome,pedido.id_pedido,pedido.id_cliente from pedido
+inner join cliente 
+on pedido.id_pedido =5 
+where cliente.id_cliente = pedido.id_cliente;
+
+select cliente.nome,pedido.id_pedido,pedido.id_cliente from pedido
+inner join cliente 
+on cliente.id_cliente = pedido.id_cliente and pedido.id_pedido = 5;
+
+#ex7 ========= 
+
+show tables;
+use ecomerce;
+select * from produto;
+select * from pedido;
+select * from pedido_item; 
+select * from cliente;
+
+
+select cliente.nome,produto.nome from cliente
+inner join pedido
+on cliente.id_cliente = pedido.id_cliente
+inner join pedido_item
+on pedido_item.id_pedido = pedido.id_pedido
+inner join produto
+on produto.id_produto = pedido_item.id_produto
+where produto.nome = 'Computador';
+
+#ex8 ===============
+
+select * from produto;
+select * from pedido;
+select * from pedido_item; 
+select * from cliente;
+
+select cliente.nome,pedido.status from cliente
+inner join pedido
+on pedido.status = 'pendente'
+where cliente.id_cliente = pedido.id_cliente; 
+
+
+#ex9 ============
+select * from produto;
+select * from pedido;
+select * from pedido_item; 
+select * from cliente; 
+
+select cliente.nome,pedido.status from cliente
+inner join pedido
+on pedido.status = 'finalizado' and cliente.id_cliente = pedido.id_cliente;
+
+#ex 10 =========
+select * from produto;
+select * from pedido;
+select * from pedido_item; 
+select * from cliente;  
+
+select cliente.nome,produto.nome,pedido.id_pedido from cliente
+inner join pedido
+on cliente.id_cliente = pedido.id_cliente
+inner join pedido_item
+on pedido_item.id_pedido = pedido.id_pedido
+inner join produto
+on produto.id_produto = pedido_item.id_produto
+where produto.nome = 'ventilador';
+
+#ex 11 =========
+select * from produto;
+select * from pedido;
+select * from pedido_item; 
+select * from cliente;
+
+select  categoria,max(preco) as maior_preço ,min(preco) as menor_preco from produto 
+
+group by categoria ; 
+
+#ex12 =========
+DELIMITER $$
+create function desconto (preco float)
+returns float 
+deterministic
+ return(5*preco/100) 
+ $$
+DELIMITER ; 
+
+
+select preco,desconto(preco) from produto where id_produto = 1; 
+
+#ex13 =========
+DELIMITER $$ 
+
+create function ICMS(preco float)returns float 
+deterministic
+return(17*preco/100) 
+$$
+DELIMITER ;  
+
+
+select preco,ICMS(preco) as ICMS from produto; 
+
+#ex14 ==========
+
+DELIMITER $$
+
+create function valor_liquido(preco float) returns float 
+deterministic
+return(preco+ICMS(preco)-desconto(preco)) 
+
+$$
+
+DELIMITER ; 
+
+
+select * from produto;
+select valor_liquido(preco) as preco_c_imp_desc from produto; 
+
+
+#ex15 ======== 
+select * from produto;
+select * from pedido;
+select * from pedido_item; 
+select * from cliente; 
+
+
+select preco from pedido_item 
+inner join produto
+on pedido_item.id_produto = produto.id_produto; 
 
 
 
