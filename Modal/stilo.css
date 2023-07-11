@@ -1,0 +1,130 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(148, 148, 148);
+    
+} 
+
+.btnOpenModal{
+
+    font-size: 36px;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgb(168, 2, 194);
+    color: wheat;
+    cursor: pointer;
+    display: flex;
+    
+}
+
+hr{
+    border: 0;
+    border-top: 1px solid rgb(0, 0, 0);
+}
+
+.modal-conteiner{
+
+    width: 70vw;
+    position: fixed;
+    top: 30px;
+    justify-content: center;
+    z-index: 999;
+    display: none;
+    font-size: 36px;
+
+}
+
+.modal{
+
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    background-color: aliceblue;
+    border-radius: 10px;
+    width: 50%;
+
+}
+.active{
+
+    display: flex;
+}
+
+.active .modal{
+    
+    animation: modal -4s;
+
+}
+
+@keyframes modal{
+
+    from{
+
+        opacity: 0;
+        transform: translate3d(0,60px,0);
+    }
+    to{
+        opacity: 1;
+        transform: translate3d(0,0,0);
+    }
+
+} 
+
+span{
+
+    margin: 10px;
+    font-size: 26px;
+
+
+} 
+
+.btn button{
+
+    font-size: medium;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+
+
+}
+
+.btnOk{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    background-color: red;
+
+
+} 
+
+
+
+@media (max-width:100px){
+    .modal{
+        padding: 10px;
+        width: 80%;
+    }
+    .btnOpenModal{
+        padding: 10px;
+        width: 80%;
+    }
+    span, .btn button {
+        font-size: smaller;
+
+    }
+}
