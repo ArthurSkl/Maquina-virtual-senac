@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <title>Listagem dinamica de Produtos </title>
+</head>
+<body>
+
+    <header>
+
+        <div class="title">
+            <h2>Produtos</h2>
+            <span>Lista de produtos da minha loja</span>
+        </div>
+    </header>
+        <div class="card">
+
+            <div class="lineInput">
+
+                <label> Produtos </label>
+                <input type="text" name="" id="produto" placeholder="NOME DO PRODUTO">
+
+            </div>
+
+            <div class="lineInput">
+
+                <label> Preço </label>
+                <input type="text" name="" id="preco" placeholder="PREÇO DO PRODUTO">
+
+            </div>
+
+            <button onclick="produto.salvar()">Salvar</button>
+            <button onclick="produto.cancelar()">Cancelar</button>
+
+        </div>
+
+        <div class="content">
+
+            <table border="1">
+
+                <thead>
+
+                    <th class="center1">ID</th>
+                    <th>Produto</th>
+                    <th>Valor</th>
+
+                </thead>
+
+                <tbody id="tbody">
+                    
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+
+    
+
+    <main>
+
+
+
+    </main>
+    
+
+
+</body>
+</html>
