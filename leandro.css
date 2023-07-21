@@ -1,0 +1,53 @@
+.corpo{
+
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    background-color: aqua;
+    justify-content: center;
+
+
+}
+
+.quadro2{
+    
+    
+
+    width: 50%;
+    background-color: rgb(126, 126, 126);
+    height: 25%;
+    
+}
+
+
+
+.quadrado1{
+
+    width: 100%;
+    height: 50%;
+    background-color: black;
+
+
+}
+
+.quadrado2{
+
+    width: 100%;
+    height: 35%;
+    background-color: aliceblue;
+
+
+}
+
+.botoes{
+    display: flex;
+    width: 100%;
+    height: 10%;
+    justify-content: space-around;
+}
+
+button{
+
+    width: 100px;
+    
+}
